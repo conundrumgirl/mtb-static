@@ -1,17 +1,17 @@
 import Footer from '@components/Footer';
+import TopNav from '@components/nav/TopNav';
+import ProTip from '@components/ProTip';
 import { CssBaseline } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import theme from '@style/theme';
 import * as React from 'react';
 import {
   BrowserRouter, Route, Routes
 } from "react-router-dom";
-import TopNav from './components/nav/TopNav';
-import ProTip from './components/ProTip';
 import routes from './routes';
-import theme from './theme';
 
 
 

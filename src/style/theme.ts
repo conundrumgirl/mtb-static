@@ -1,4 +1,4 @@
-import { createTheme, Theme } from '@mui/material/styles'
+import { alpha, createTheme, Theme } from '@mui/material/styles'
 import { CSSProperties } from 'react'
 
 
@@ -26,7 +26,11 @@ export const openSansFont = [
   const globals: cssGlobalClasses = {
     a: {
       color: 'black',
+    },
+    p:  {
+      marginBottom: '20px'
     }
+
 }
   
   const SPACE_UNIT = 8
@@ -38,7 +42,7 @@ export const openSansFont = [
 export const colors = {
   primaryDarkBlue: '#072751', //Primary_DarkBlue
   primaryBlue: '#154078', //Primary_Blue
-  lightBlue: '#2E84F6', // Primary_LightBlue
+  primaryLightBlue: '#2E84F6', // Primary_LightBlue
   primaryGreenBlue: '#5CB4D3', //Primary_GreenBlue
   accent: '#37E7E7', //Accent
   neutralsWhite: '#fff',
@@ -46,6 +50,13 @@ export const colors = {
   neutralsWhiteBlue: '#F6F5FF',
   neutralsGray: '#375074', //Neutrals_Gray
 }
+
+/* exemple module overridedeclare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    dashed: true;
+  }
+}*/
+
 
 const staticPagesTheme: Theme = createTheme({
   breakpoints: {
@@ -60,6 +71,7 @@ const staticPagesTheme: Theme = createTheme({
   palette: {
     text: {
       primary: colors.neutralsWhite,
+      secondary: alpha(colors.neutralsWhite, 0.5)
     },
     background: {
       default: colors.primaryBlue,
@@ -80,6 +92,13 @@ const staticPagesTheme: Theme = createTheme({
   typography: {
     fontFamily: latoFont,
 
+    body2: {
+      paddingBottom: '20px',
+      fontSize: '16px',
+      lineHeight: '20px'
+
+    },
+
     h1: {
       fontWeight: '700',
       fontSize: '72px',
@@ -98,11 +117,13 @@ const staticPagesTheme: Theme = createTheme({
       fontWeight: '700',
       fontSize: '32px',
       lineHeight: '38px',
+   
     },
     h4: {
       fontWeight: '700',
       fontSize: '24px',
     },
+  
   },
 
   components: {

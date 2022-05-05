@@ -72,11 +72,13 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
         <Box sx={{
           height: '104px',
           display: 'flex',
-          backgroundColor: colors.primaryDarkBlue,
+          backgroundColor: colors.primaryBlue,
           alignItems: 'center',
           flexDirection: 'row',
           justifyContent: 'space-between',
-          padding: 0
+
+          px: 10,
+          py: 5
         }}>
           <Logo
             title="Mobile Toolbox"

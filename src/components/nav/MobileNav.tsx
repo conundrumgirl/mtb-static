@@ -11,28 +11,13 @@ import { NavLink } from 'react-router-dom';
 
 const drawerWidth = '200px'
 
-
-const Item = styled(Box)<{ test?: number }>(({ theme, test }) => ({
-  //backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  //...theme.typography.body1,
-  /*  ...theme.typography.body2,*/
-  // padding: theme.spacing(1),
-  /*[theme.breakpoints.down('lg')]: {
-    padding: theme.spacing()
-  },*/
-  //border: '1px solid black',
-
-  color: theme.palette.text.primary,
-  background: test,
-  borderRadius: 0,
-}))
-
-const OpenMobileMenuButton = styled(IconButton)(({ theme }) => ({
+const OpenMobileMenuButton = styled(IconButton)(({ theme, color }) => ({
 
   marginRight: theme.spacing(2),
   float: 'right',
   display: 'block',
   textAlign: 'right',
+  color: color,
   '&::after': {
     content: '',
     display: 'table',
@@ -69,12 +54,8 @@ const StyledLink = styled('span')(({ theme }) => ({
 }))
 
 const DrawerBox = styled(Drawer)(({ theme }) => ({
-
-
   width: drawerWidth,
   flexShrink: 0,
-
-
 
   '& .MuiPaper-root': {
     width: drawerWidth,
@@ -85,9 +66,9 @@ const DrawerBox = styled(Drawer)(({ theme }) => ({
 
 type Routes = { name: string; path: string }[]
 
-const MobileNav: FunctionComponent<{ routes: Routes }> = (
+const MobileNav: FunctionComponent<{ routes: Routes, isLight?: boolean }> = (
 
-  { routes }
+  { routes, isLight }
 ) => {
 
   const [isMobileOpen, setIsMobileOpen] = React.useState(false)
@@ -98,7 +79,7 @@ const MobileNav: FunctionComponent<{ routes: Routes }> = (
 
       {' '}
       <OpenMobileMenuButton
-        color="inherit"
+        color={isLight ? 'primary' : 'inherit'}
         aria-label="Open drawer"
         edge="end"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -122,20 +103,20 @@ const MobileNav: FunctionComponent<{ routes: Routes }> = (
             keepMounted: true, // Better open performance on mobile.
           }}>
 
-          <Box display="flex"  mt={2}   flexDirection= "row"
-    justifyContent= "space-between"
-    alignItems="flex-start">
+          <Box display="flex" mt={2} flexDirection="row"
+            justifyContent="space-between"
+            alignItems="flex-start">
 
             <Link
-            sx={{ml: 3, width: '120px'}}
+              sx={{ ml: 3, width: '120px' }}
               target="_blank"
               href="https://www.mobiletoolbox.org"
               className={''/*classes.mobileToolBarLink*/}>
-              <Logo  />
+              <Logo />
             </Link>
             <ClearIcon
               onClick={() => setIsMobileOpen(false)}
-          />
+            />
           </Box>
 
           {routes.filter(r => !!r.name).map(route => (

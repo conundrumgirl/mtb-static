@@ -10,9 +10,9 @@ import { colors, latoFont } from '@style/theme'
 import * as React from 'react'
 import { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
-import Carousel from './Carousel'
+import Carousel from '../widgets/Carousel'
 
-const Item = styled('div')<{test?: number}>(({theme, test}) => ({
+const Item = styled('div')<{ test?: number }>(({ theme, test }) => ({
 
   padding: theme.spacing(1),
 
@@ -22,14 +22,14 @@ const Item = styled('div')<{test?: number}>(({theme, test}) => ({
   borderRadius: 0,
 }))
 
-const Intro = styled('p')(({theme}) => ({
+const Intro = styled('p')(({ theme }) => ({
   py: 7,
   fontSize: '24px',
   lineHeight: '29px',
   opacity: 0.6,
 }))
 
-const LearnMoreLink = styled(Link)(({theme}) => ({
+const LearnMoreLink = styled(Link)(({ theme }) => ({
   color: colors.accent,
   fontSize: '14px',
   textDecoration: 'none',
@@ -40,7 +40,7 @@ const LearnMoreLink = styled(Link)(({theme}) => ({
   alignItems: 'center',
 }))
 
-const Body = styled('p')(({theme}) => ({
+const Body = styled('p')(({ theme }) => ({
   fontFamily: latoFont,
   fontStyle: 'normal',
   fontWeight: 300,
@@ -88,8 +88,8 @@ export const HowItWorksDesktop: FunctionComponent = () => {
   return (
     <Grid
       container
-      columnSpacing={{xs:0, lg: 15}}
-      rowSpacing={{xs: 2, lg: 59}}
+      columnSpacing={{ xs: 0, lg: 15 }}
+      rowSpacing={{ xs: 2, lg: 59 }}
       justifyContent="space-between"
       alignItems="center">
       {info.map((item, index) => (
@@ -99,7 +99,7 @@ export const HowItWorksDesktop: FunctionComponent = () => {
               <Typography variant="h2" mb={12}>
                 {item.title}
               </Typography>
-              <Typography variant="h1" sx={{color: '#37E7E7'}}>
+              <Typography variant="h1" sx={{ color: '#37E7E7' }}>
                 0{index + 1}
               </Typography>
               <Intro>{item.intro}</Intro>
@@ -111,7 +111,7 @@ export const HowItWorksDesktop: FunctionComponent = () => {
             </Item>
           </Grid>
           <Grid item xs={12} lg={6}>
-            <Item sx={{textAlign: {xs: 'center', md: 'right'}}}>
+            <Item sx={{ textAlign: { xs: 'center', md: 'right' } }}>
               {item.image}
             </Item>
           </Grid>

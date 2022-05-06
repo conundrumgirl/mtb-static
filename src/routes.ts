@@ -4,11 +4,11 @@
 //import SignInPage from './SignInPage'
 import AssessmentDetail from '@components/assessments/AssessmentDetail'
 import AssessmentLibrary from '@components/assessments/AssessmentLibrary'
+import AboutUs from './AboutUs'
 import Home from './components/home/Home'
 
-
-export default  [
-{
+export default [
+  {
     path: '/',
     name: '',
     Component: Home,
@@ -24,10 +24,10 @@ export default  [
   {
     path: '/about-us',
     name: 'About Us',
-    Component: Home,
+    Component: AboutUs,
     exact: true,
   },
- {
+  {
     path: '/assessments',
     name: 'Assessments',
     Component: AssessmentLibrary,
@@ -51,7 +51,7 @@ export default  [
     Component: AssessmentDetail,
     exact: true,
   },
- /* {
+  /* {
     path: '/documentation',
     name: 'Documentation',
     Component: Home,

@@ -5,14 +5,7 @@ import React, { FunctionComponent } from 'react';
 import StyledLink from '../widgets/StyledLink';
 
 const ScienceContainer = styled(Box)(({ theme }) => ({
-  /* backgroundPositionY: 'bottom',
-  backgroundPositionX: 'right',
-  backgroundRepeat: 'no-repeat',
-  [theme.breakpoints.up('lg')]: {
-    backgroundImage: 'url(' + bgRight + ')',
-    marginRight: '-200px',
-    paddingRight: '200px',
-  },*/
+
 }))
 
 const Science: FunctionComponent<{}> = () => {

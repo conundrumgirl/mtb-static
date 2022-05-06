@@ -1,15 +1,15 @@
 import { ReactComponent as Logo } from '@assets/mtb_logo_static.svg'
+import { ReactComponent as LogoLight } from '@assets/mtb_logo_static_blue.svg'
 import { Box, Hidden } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
 import theme, { colors, latoFont } from '@style/theme'
 import React, { FunctionComponent } from 'react'
-import { useLocation } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import MobileNav from './MobileNav'
 
 
-const StyledLink = styled('span')(({ theme }) => ({
+const StyledLink = styled('span')<{ isLight?: boolean }>(({ theme, isLight }) => ({
   '&>a': {
     margin: theme.spacing(5),
     padding: theme.spacing(0.5, 0),
@@ -18,53 +18,36 @@ const StyledLink = styled('span')(({ theme }) => ({
     fontStyle: 'normal',
     fontWeight: 300,
     fontSize: '18px',
-    color: theme.palette.common.white,
+    color: isLight ? colors.neutralsBlack : theme.palette.common.white,
     '&:last-child': {
       marginRight: 0,
     },
     '&:hover': {
       paddingTop: '2px',
       paddingBottom: '1px',
-      borderBottom: '1px solid #fff',
+      borderBottom: isLight ? `1px solid ${colors.neutralsBlack}` : `1px solid ${theme.palette.common.white}`,
     }
   }
-
-
 }))
 
 
 type AppTopNavProps = {
-  routes: { name: string; path: string; }[]
+  routes: { name: string; path: string; }[],
+  isLight?: boolean
 
 }
 
 const TopNav: FunctionComponent<AppTopNavProps> = ({
   routes,
-
+  isLight,
 
   ...props
 }: AppTopNavProps) => {
-
-  const location = useLocation()
-
   const [menuAnchor, setMenuAnchor] = React.useState<null | HTMLElement>(null)
-
-  const handleMenuClose = () => {
-    setMenuAnchor(null)
-  }
-
-  // Hide the app store download page and also the sign in page from the nav.
-
-
-
-
-
-
   return (
     <>
-
       <Hidden lgUp>
-        <MobileNav routes={routes.filter(route => route.name)}
+        <MobileNav isLight={isLight} routes={routes.filter(route => route.name)}
         />
 
       </Hidden>
@@ -72,19 +55,23 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
         <Box sx={{
           height: '104px',
           display: 'flex',
-          backgroundColor: colors.primaryBlue,
+          backgroundColor: isLight ? colors.neutralsWhite : colors.primaryBlue,
           alignItems: 'center',
           flexDirection: 'row',
           justifyContent: 'space-between',
-
           px: 10,
           py: 5
         }}>
-          <Logo
-            title="Mobile Toolbox"
-
-            style={{ paddingLeft: '16px' }}
-          />
+          {
+            isLight ?
+              <LogoLight
+                title="Mobile Toolbox"
+                style={{ paddingLeft: '16px' }}
+              /> :
+              <Logo
+                title="Mobile Toolbox"
+                style={{ paddingLeft: '16px' }}
+              />}
           <Toolbar
             component="nav"
             variant="dense"
@@ -94,20 +81,17 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
               justifyContent: 'space-between'
             }}>
             {routes.filter(r => !!r.name).map(route => (
-              <StyledLink>
+              <StyledLink isLight={isLight}>
                 <NavLink
                   to={route.path}
                   key={route.name}
-                  style={({ isActive }) => ({ fontWeight: isActive ? 'bold' : 'normal' })}
-                >
-
+                  style={({ isActive }) => ({ fontWeight: isActive ? 'bold' : 'normal' })}>
                   {route.name}
                 </NavLink>
               </StyledLink>
             ))}
           </Toolbar>
         </Box>
-
       </Hidden>
     </>
   )

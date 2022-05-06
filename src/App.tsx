@@ -1,5 +1,4 @@
 import Footer from '@components/Footer';
-import TopNav from '@components/nav/TopNav';
 import { CssBaseline } from '@mui/material';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
@@ -22,13 +21,13 @@ export default function App() {
             minHeight: '100vh',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            
-           // backgroundColor: 'yellow'
+
+            // backgroundColor: 'yellow'
 
           }}>
-            <TopNav routes={routes} />
+
             <Box sx={{
-              padding: theme.spacing(10, 0),
+              // padding: theme.spacing(10, 0),
               width: '100%'
             }} >
 
@@ -43,6 +42,7 @@ export default function App() {
                 ))}
               </Routes>
             </Box>
+
             <Footer />
 
           </Box>

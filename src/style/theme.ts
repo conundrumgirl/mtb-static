@@ -1,44 +1,46 @@
-import { createTheme, Theme } from '@mui/material/styles'
-import { CSSProperties } from 'react'
-
+import {alpha, createTheme, Theme} from '@mui/material/styles'
+import {CSSProperties} from 'react'
 
 export const openSansFont = [
-    'Open Sans',
-    'serif',
-    'Lato',
-    'Roboto',
-    'Helvetica',
-    'Arial',
-  ].join(',')
-  
-  export const playfairDisplayFont = [
-    'Playfair Display',
-    'serif',
-    'Lato',
-    'Roboto',
-    'Helvetica',
-    'Arial',
-  ].join(',')
+  'Open Sans',
+  'serif',
+  'Lato',
+  'Roboto',
+  'Helvetica',
+  'Arial',
+].join(',')
 
-  type cssGlobalClasses = {
-    [key: string]: CSSProperties
-  }
-  const globals: cssGlobalClasses = {
-    a: {
-      color: 'black',
-    }
+export const playfairDisplayFont = [
+  'Playfair Display',
+  'serif',
+  'Lato',
+  'Roboto',
+  'Helvetica',
+  'Arial',
+].join(',')
+
+type cssGlobalClasses = {
+  [key: string]: CSSProperties
 }
-  
-  const SPACE_UNIT = 8
-  
-  export const latoFont = ['Lato', 'Roboto', 'Helvetica', 'Arial'].join(',')
-  
-  export const poppinsFont = ['Poppins', 'sans-serif'].join(',')
-  
+const globals: cssGlobalClasses = {
+  a: {
+    color: 'black',
+  },
+  p: {
+    marginBottom: '20px',
+  },
+}
+
+const SPACE_UNIT = 8
+
+export const latoFont = ['Lato', 'Roboto', 'Helvetica', 'Arial'].join(',')
+
+export const poppinsFont = ['Poppins', 'sans-serif'].join(',')
+
 export const colors = {
   primaryDarkBlue: '#072751', //Primary_DarkBlue
   primaryBlue: '#154078', //Primary_Blue
-  lightBlue: '#2E84F6', // Primary_LightBlue
+  primaryLightBlue: '#2E84F6', // Primary_LightBlue
   primaryGreenBlue: '#5CB4D3', //Primary_GreenBlue
   accent: '#37E7E7', //Accent
   neutralsWhite: '#fff',
@@ -46,6 +48,12 @@ export const colors = {
   neutralsWhiteBlue: '#F6F5FF',
   neutralsGray: '#375074', //Neutrals_Gray
 }
+
+/* exemple module overridedeclare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    dashed: true;
+  }
+}*/
 
 const staticPagesTheme: Theme = createTheme({
   breakpoints: {
@@ -60,6 +68,7 @@ const staticPagesTheme: Theme = createTheme({
   palette: {
     text: {
       primary: colors.neutralsWhite,
+      secondary: alpha(colors.neutralsWhite, 0.5),
     },
     background: {
       default: colors.primaryBlue,
@@ -75,10 +84,17 @@ const staticPagesTheme: Theme = createTheme({
       light: '#2E84F6', // Primary_LightBlue
       contrastText: '#5CB4D3', //Primary_GreenBlue
     },
+    secondary: {
+      main: '#FFF',
+    },
   },
   spacing: 4,
   typography: {
     fontFamily: latoFont,
+
+    body2: {
+      color: colors.neutralsBlack,
+    },
 
     h1: {
       fontWeight: '700',
@@ -139,6 +155,22 @@ const staticPagesTheme: Theme = createTheme({
           '&:hover': {
             backgroundColor: colors.primaryDarkBlue,
             color: colors.neutralsWhite,
+          },
+          '&:focus': {
+            backgroundColor: colors.neutralsBlack,
+            borderColor: colors.neutralsBlack,
+            color: colors.neutralsWhite,
+          },
+        },
+        outlinedSecondary: {
+          border: `1px solid ${colors.neutralsWhite}`,
+          borderRadius: '54px',
+          backgroundColor: 'transparent',
+          textTransform: 'none',
+          color: colors.neutralsWhite,
+          '&:hover': {
+            backgroundColor: colors.neutralsWhite,
+            color: colors.primaryDarkBlue,
           },
           '&:focus': {
             backgroundColor: colors.neutralsBlack,

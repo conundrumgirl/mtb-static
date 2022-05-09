@@ -1,138 +1,138 @@
 //import MobileDrawerMenuHeader from '@components/widgets/MobileDrawerMenuHeader'
-import AbcIcon from '@mui/icons-material/Abc';
-import ListIcon from '@mui/icons-material/List';
-import { Box, Drawer, IconButton } from '@mui/material';
+import { ReactComponent as Logo } from '@assets/mtb_logo_static.svg';
+import ClearIcon from '@mui/icons-material/Clear';
+import Menu from '@mui/icons-material/Menu';
+import { Box, Drawer, IconButton, Link } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { colors, latoFont } from '@style/theme';
 import React, { FunctionComponent } from 'react';
-import { ReactComponent as Logo } from '../../assets/mtb_logo_static.svg';
-import { colors, latoFont } from '../../theme';
-import MobileDrawerMenuHeader from './MobileDrawerMenuHeader';
+import { NavLink } from 'react-router-dom';
 
 
+const drawerWidth = '200px'
 
+const OpenMobileMenuButton = styled(IconButton)(({ theme, color }) => ({
 
-
-const drawerWidth = '320px'
-
-
-const Item = styled(Box)<{test?: number}>(({theme, test}) => ({
-  //backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  //...theme.typography.body1,
-  /*  ...theme.typography.body2,*/
-  // padding: theme.spacing(1),
-  /*[theme.breakpoints.down('lg')]: {
-    padding: theme.spacing()
-  },*/
-  //border: '1px solid black',
-
-  color: theme.palette.text.primary,
-  background: test,
-  borderRadius: 0,
-}))
-
-const OpenMobileMenuButton = styled(IconButton)(({theme}) => ({
-
-    marginRight: theme.spacing(2),
-    float: 'right',
-    '&::after': {
-      content: '',
-      display: 'table',
-      clear: 'both',
-    },
-  }
+  marginRight: theme.spacing(2),
+  float: 'right',
+  display: 'block',
+  textAlign: 'right',
+  color: color,
+  '&::after': {
+    content: '',
+    display: 'table',
+    clear: 'both',
+  },
+}
 ))
 
-const DrawerBox = styled(IconButton)(({theme}) => ({
 
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerMenuItem: {
-    fontFamily: latoFont,
-    fontSize: '15px',
-    textDecoration: 'none',
-    color: 'inherit',
-    flexShrink: 0,
-    height: '56px',
-    boxSizing: 'border-box',
+const StyledLink = styled('span')(({ theme }) => ({
+  display: 'block',
+  '&>a': {
+    margin: theme.spacing(2, 0),
+    display: 'block',
     paddingLeft: theme.spacing(3),
+    textDecoration: 'none',
+    fontFamily: latoFont,
+    fontStyle: 'normal',
+    fontWeight: 300,
+    fontSize: '18px',
+    color: theme.palette.common.white,
+    '&:last-child': {
+      marginRight: 0,
+    },
     '&:hover': {
+
       backgroundColor: '#fff',
-    },
+      color: colors.primaryBlue,
 
-    '&$drawerProfileOptionsDisabled:hover': {
-      backgroundColor: 'inherit',
-      cursor: 'default',
-    },
-    display: 'flex',
-    alignItems: 'center',
-    borderLeft: '4px solid transparent',
-  },
-  drawerMenuSelectedLink: {
-    borderLeft: '4px solid #353535',
-    fontWeight: 'bold',
-  },
-  drawerMenuSeparator: {
-    height: '2px',
-    margin: '20px 0px',
-    backgroundColor: '#2A2A2A',
-  },
+    }
+  }
 
-  drawerPaper: {
+
+}))
+
+const DrawerBox = styled(Drawer)(({ theme }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+
+  '& .MuiPaper-root': {
     width: drawerWidth,
     backgroundColor: colors.primaryDarkBlue, //'#F8F8F8',
   },
 
 }))
 
+type Routes = { name: string; path: string }[]
 
+const MobileNav: FunctionComponent<{ routes: Routes, isLight?: boolean }> = (
 
-const MobileNav: FunctionComponent<{children: React.ReactNode}> = ({
-
-  children
-}) => {
+  { routes, isLight }
+) => {
 
   const [isMobileOpen, setIsMobileOpen] = React.useState(false)
-  const menuChildren = React.Children.toArray(children)
-  if (menuChildren.length < 2) {
-    return <>no kids</>
-  }
+
+
   return (
     <>
-    <AbcIcon/>
+
       {' '}
       <OpenMobileMenuButton
-        color="inherit"
+        color={isLight ? 'primary' : 'inherit'}
         aria-label="Open drawer"
         edge="end"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-    
+
         size="large">
-        <ListIcon/>
+        <Menu />
       </OpenMobileMenuButton>
-      <Box sx={{ width: drawerWidth,
-    flexShrink: 0}}>
-        <Drawer
+      <Box sx={{
+        width: drawerWidth,
+        flexShrink: 0
+      }}>
+        <DrawerBox
           variant="temporary"
           anchor="right"
           open={isMobileOpen}
           onClose={() => setIsMobileOpen(false)}
           classes={{
-           // paper: classes.drawerPaper,
+            // paper: classes.drawerPaper,
           }}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}>
-          <MobileDrawerMenuHeader
-            setIsMobileOpen={setIsMobileOpen}
-  
-            logoImage={<Logo style={{width: '120px'}} />}
-          />
 
-          {menuChildren}
+          <Box display="flex" mt={2} flexDirection="row"
+            justifyContent="space-between"
+            alignItems="flex-start">
 
-        </Drawer>
+            <Link
+              sx={{ ml: 3, width: '120px' }}
+              target="_blank"
+              href="https://www.mobiletoolbox.org"
+              className={''/*classes.mobileToolBarLink*/}>
+              <Logo />
+            </Link>
+            <ClearIcon
+              onClick={() => setIsMobileOpen(false)}
+            />
+          </Box>
+
+          {routes.filter(r => !!r.name).map(route => (
+            <StyledLink>
+              <NavLink
+                to={route.path}
+                key={route.name}
+                style={({ isActive }) => ({ fontWeight: isActive ? 'bold' : 'normal' })}
+              >
+
+                {route.name}
+              </NavLink>
+            </StyledLink>
+          ))}
+
+        </DrawerBox>
       </Box>
     </>
   )

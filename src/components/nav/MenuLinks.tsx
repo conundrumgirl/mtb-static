@@ -1,14 +1,12 @@
 
 import { styled } from '@mui/material/styles';
+import { latoFont } from '@style/theme';
 import React, { FunctionComponent } from 'react';
 import { NavLink } from 'react-router-dom';
-import { latoFont } from '../../theme';
 
 type MenuLinksProps = {
-  routes: {name: string; path: string; isRhs?: boolean}[]
-  className: string
-  disabledClassName?: string
-  activeClassName: string
+  routes: {name: string; path: string}[]
+
 
 
 }
@@ -18,7 +16,6 @@ const StyledLink = styled('span')(({theme}) => ({
     margin: theme.spacing(5),
     padding: theme.spacing(0.5, 0),
     textDecoration: 'none',
-    // flexShrink: 0,
     fontFamily: latoFont,
     fontStyle: 'normal',
     fontWeight: 300,
@@ -38,8 +35,7 @@ const StyledLink = styled('span')(({theme}) => ({
 
 export const MenuLinks: FunctionComponent<MenuLinksProps> = ({
   routes,
-  className,
-  activeClassName,
+
 }) => {
   console.log('menulink', routes)
   let links = routes.map(route => (

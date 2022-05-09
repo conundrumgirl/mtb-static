@@ -2,18 +2,19 @@
 //import AssessmentLibrary from './components/assessments/AssessmentLibrary'
 
 //import SignInPage from './SignInPage'
+import AssessmentDetail from '@components/assessments/AssessmentDetail'
+import AssessmentLibrary from '@components/assessments/AssessmentLibrary'
+import AboutUs from './AboutUs'
 import Home from './components/home/Home'
 
-
-export default  [
- /* {
+export default [
+  {
     path: '/',
     name: '',
-    Component: SignInPage,
+    Component: Home,
     exact: true,
-    noToolbar: false,
   },
- */
+
   {
     path: '/home',
     name: 'Home',
@@ -23,13 +24,13 @@ export default  [
   {
     path: '/about-us',
     name: 'About Us',
-    Component: Home,
+    Component: AboutUs,
     exact: true,
   },
- {
+  {
     path: '/assessments',
     name: 'Assessments',
-    Component: Home, //AssessmentLibrary,
+    Component: AssessmentLibrary,
     exact: false,
   },
   {
@@ -47,10 +48,10 @@ export default  [
   {
     path: '/assessments/:id',
     name: '',
-    Component: Home, //AssessmentDetail,
+    Component: AssessmentDetail,
     exact: true,
   },
- /* {
+  /* {
     path: '/documentation',
     name: 'Documentation',
     Component: Home,

@@ -2,6 +2,7 @@ import ClockIcon from '@assets/clock.svg'
 import OfficialMobileToolboxVersion from '@assets/official_mobile_toolbox_icon.svg'
 import ScientificallyValidatedIcon from '@assets/validated.svg'
 import Loader from '@components/widgets/Loader'
+import PageShell from '@components/widgets/PageShell'
 import { useAsync } from '@helpers/AsyncHook'
 import {
   Box,
@@ -9,9 +10,7 @@ import {
   Container,
   Divider,
   Grid,
-  Hidden,
-  Paper,
-  styled,
+  Hidden, styled,
   ThemeProvider,
   Typography
 } from '@mui/material'
@@ -34,7 +33,7 @@ const ImageTextRow = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(2.5),
 }))
 
-const InfoTextInContainer = styled(Paper)(({ theme }) => ({
+const InfoTextInContainer = styled(Box)(({ theme }) => ({
   fontSize: '14px',
   lineHeight: '18px',
   fontFamily: poppinsFont,
@@ -50,12 +49,7 @@ const StyledDivider = styled(Divider)(({ theme }) => ({
 
 type AssessmentDetailProps = {}
 
-
-
 const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
-
-
-
 
   const links = [
     {
@@ -65,8 +59,6 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
   ]
 
   let { id } = useParams<{ id: string }>()
-
-
 
   const { data, status, error, run } = useAsync<Assessment>({
     status: 'PENDING',
@@ -119,26 +111,23 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
       }}>{data.title}</Box></>)
 
     return (
-      <Box
-        sx={{
+      <PageShell isLight={true} >
+
+
+        <Container maxWidth="md" sx={{
+          textAlign: 'center',
+          paddingBottom: theme.spacing(6),
           backgroundColor: '#fff',
           color: colors.neutralsBlack,
           minHeight: '100vh'
-        }}
-      >
-
-        <Box sx={{
-          padding: theme.spacing(5, 5, 8, 3),
-          boxShadow: '0 0 0 0',
-          marginBottom: 15
         }}>
-          <BreadCrumb links={links} ></BreadCrumb>
-        </Box>
-        <Container maxWidth="md" sx={{
-          textAlign: 'center',
-
-          paddingBottom: theme.spacing(6)
-        }}>
+          <Box sx={{
+            padding: theme.spacing(0, 5, 0, 3),
+            boxShadow: '0 0 0 0',
+            marginBottom: 8
+          }}>
+            <BreadCrumb links={links} ></BreadCrumb>
+          </Box>
 
           <InfoTextInContainer sx={{ color: colors.neutralsBlack }} >
 
@@ -166,7 +155,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
                         To learn more about this assessment and try it out
                         please log into Mobile Toolbox.
                       </Typography>
-                      <Button variant="outlined" color="primary">
+                      <Button variant="outlined" color="secondary">
                         Go to Login
                       </Button>
                     </Box>
@@ -244,10 +233,12 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
             </Grid>
           </InfoTextInContainer>
         </Container>
-      </Box>
+
+      </PageShell  >
+
     )
   }
-  return <></>
+
 }
 
 export default AssessmentDetail

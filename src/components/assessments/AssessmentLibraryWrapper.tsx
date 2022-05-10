@@ -17,24 +17,24 @@ type AssessmentLibraryWrapperProps = {
 
 const WhiteButton = styled(Button)(({ theme }) => ({
   borderRadius: '0px',
-    padding: theme.spacing(1.5),
-    color: 'black',
+  padding: theme.spacing(1.5),
+  color: 'black',
+  backgroundColor: '#fff',
+  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+  fontFamily: 'Lato',
+  '&:hover': {
+    fontWeight: 'bolder',
     backgroundColor: '#fff',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    fontFamily: 'Lato',
-    '&:hover': {
-      fontWeight: 'bolder',
-      backgroundColor: '#fff',
-    },
-    '& svg': {
-      marginRight: theme.spacing(1.5),
-    }
+  },
+  '& svg': {
+    marginRight: theme.spacing(1.5),
+  }
 }))
 
 const Main = styled(Box)(({ theme }) => ({
   flexGrow: 1,
 
-  backgroundColor: colors.primaryDarkBlue,
+  backgroundColor: colors.primaryBlue,
   minWidth: '1000px',
   [theme.breakpoints.down('lg')]: {
     minWidth: '750px',
@@ -47,20 +47,20 @@ const Main = styled(Box)(({ theme }) => ({
 
 
 const AssessmentContainer = styled(Container)(({ theme }) => ({
-  
-  
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    [theme.breakpoints.down('md')]: {
-      maxWidth: '600px',
-    },
-  }))
+
+
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '600px',
+  },
+}))
 
 
 const CardGrid = styled(Box)(({ theme }) => ({
-  
-  
+
+
   display: 'grid',
   padding: theme.spacing(10, 0),
   gridTemplateColumns: `repeat(auto-fill,${theme.spacing(62)})`,
@@ -81,10 +81,7 @@ const CardGrid = styled(Box)(({ theme }) => ({
 const AssessmentLibraryWrapper: FunctionComponent<AssessmentLibraryWrapperProps> =
   ({
     children,
-    isAssessmentLibrary = true,
-    tags,
-    assessments,
-    onChangeTags,
+
 
     isFromNewStaticPages,
   }: AssessmentLibraryWrapperProps) => {
@@ -98,12 +95,12 @@ const AssessmentLibraryWrapper: FunctionComponent<AssessmentLibraryWrapperProps>
         assessments={assessments}
         onChangeTags={(tags: string[]) => onChangeTags(tags)}
       /> */}
-        <AssessmentContainer  maxWidth="xl">
-         
+        <AssessmentContainer maxWidth="xl">
+
 
           <CardGrid
-       
-            sx={{margin: isFromNewStaticPages ? '40px 60px' : 0}}>
+
+            sx={{ margin: isFromNewStaticPages ? '40px 60px' : 0 }}>
             {children}
           </CardGrid>
         </AssessmentContainer>

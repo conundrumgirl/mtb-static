@@ -68,7 +68,7 @@ const staticPagesTheme: Theme = createTheme({
   palette: {
     text: {
       primary: colors.neutralsWhite,
-      secondary: alpha(colors.neutralsWhite, 0.5),
+      secondary: alpha(colors.neutralsWhite, 0.6),
     },
     background: {
       default: colors.primaryBlue,

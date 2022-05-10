@@ -39,12 +39,7 @@ export default [
     Component: Home, //AssessmentLibrary,
     exact: false,
   },
-  {
-    path: '/login',
-    name: 'Login',
-    Component: Home, //AssessmentLibrary,
-    exact: false,
-  },
+
   {
     path: '/assessments/:id',
     name: '',

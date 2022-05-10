@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar'
 import theme, { colors, latoFont } from '@style/theme'
 import React, { FunctionComponent } from 'react'
 import { NavLink } from 'react-router-dom'
+import LoginLink from './LoginLink'
 import MobileNav from './MobileNav'
 
 
@@ -16,7 +17,7 @@ const StyledLink = styled('span')<{ isLight?: boolean }>(({ theme, isLight }) =>
     textDecoration: 'none',
     fontFamily: latoFont,
     fontStyle: 'normal',
-    fontWeight: 300,
+    fontWeight: 400,
     fontSize: '18px',
     color: isLight ? colors.neutralsBlack : theme.palette.common.white,
     '&:last-child': {
@@ -85,11 +86,14 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
                 <NavLink
                   to={route.path}
                   key={route.name}
-                  style={({ isActive }) => ({ fontWeight: isActive ? 'bold' : 'normal' })}>
+                  style={({ isActive }) => ({ fontWeight: isActive ? 'bold' : 400 })}>
                   {route.name}
                 </NavLink>
               </StyledLink>
             ))}
+            <StyledLink isLight={isLight}>
+              <LoginLink key="loginLink" />
+            </StyledLink>
           </Toolbar>
         </Box>
       </Hidden>

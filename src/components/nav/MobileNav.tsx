@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import { colors, latoFont } from '@style/theme';
 import React, { FunctionComponent } from 'react';
 import { NavLink } from 'react-router-dom';
+import LoginLink from './LoginLink';
 
 
 const drawerWidth = '200px'
@@ -131,6 +132,9 @@ const MobileNav: FunctionComponent<{ routes: Routes, isLight?: boolean }> = (
               </NavLink>
             </StyledLink>
           ))}
+          <StyledLink >
+            <LoginLink key="loginLink" />
+          </StyledLink>
 
         </DrawerBox>
       </Box>

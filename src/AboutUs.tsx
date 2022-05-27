@@ -1,6 +1,11 @@
-import {ReactComponent as Northwestern_Logo} from '@assets/northwestern_logo.svg'
-import {ReactComponent as PenState_Logo} from '@assets/pen_state_logo.svg'
-import {ReactComponent as SageBio_Logo} from '@assets/sage_bio_logo.svg'
+import massgeneral_logo from '@assets/about/massgeneral.svg'
+import northwestern_logo from '@assets/about/northwesternu.svg'
+import penstate_logo from '@assets/about/pennstate.svg'
+import ucsandiego_logo from '@assets/about/ucsandiego.svg'
+import ucsf_logo from '@assets/about/ucsf.svg'
+import udelaware_logo from '@assets/about/udelaware.svg'
+import washu_logo from '@assets/about/washu.svg'
+import sagebio_logo from '@assets/sage_bio_logo.svg'
 import PageShell from '@components/widgets/PageShell'
 import ClearIcon from '@mui/icons-material/Clear'
 import {
@@ -25,6 +30,17 @@ import {Box} from '@mui/system'
 import {latoFont} from '@style/theme'
 import React, {FunctionComponent} from 'react'
 import data from './about_data'
+
+const orgImages: Map<string, string> = new Map([
+  [northwestern_logo, 'Northwestern University'],
+  [sagebio_logo, 'Sage Bionetworks'],
+  [penstate_logo, 'Penn State'],
+  [massgeneral_logo, 'Massachusets General Hospital'],
+  [ucsandiego_logo, 'University of California San Diego'],
+  [ucsf_logo, 'University of California San Francisco'],
+  [udelaware_logo, 'University of Delaware'],
+  [washu_logo, 'Washington University in St. Louis'],
+])
 
 const ContributorContainer = styled('div')(({theme}) => ({
   display: 'flex',
@@ -63,17 +79,28 @@ const StyledH2 = styled('h2')(({theme}) => ({
   color: '#000',
 }))
 
-const LogoContainer = styled('div')(({theme}) => ({
-  width: '100%',
-  flexDirection: 'row',
-  display: 'flex',
-
-  justifyContent: 'center',
-  marginBottom: theme.spacing(10),
-  '&> img, > svg': {
-    margin: theme.spacing(0, 11),
-  },
-}))
+const LogoContainer = styled('div')<{rowIndex: number}>(
+  ({theme, rowIndex}) => ({
+    width: '100%',
+    flexDirection: 'row',
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: theme.spacing(10),
+    '&> img, > svg': {
+      margin: theme.spacing(0, 11),
+      flexGrow: 0,
+    },
+    [theme.breakpoints.down('md')]: {
+      marginBottom: rowIndex == 1 ? theme.spacing(0) : theme.spacing(10),
+      flexDirection: rowIndex == 1 ? 'column' : 'row',
+      flexWrap: 'wrap',
+      '&> img, > svg': {
+        margin: theme.spacing(5, 2),
+        flexGrow: 0,
+      },
+    },
+  })
+)
 
 const StyledSelect = styled(TextField)(({theme}) => ({
   margin: '0 auto',
@@ -148,6 +175,7 @@ const Photos = styled('div')(({theme}) => ({
 
   display: 'flex',
   flexWrap: 'wrap',
+  justifyContent: 'flex-start',
 
   backgroundColor: '#fff',
   width: '100%',
@@ -298,7 +326,7 @@ const AboutUs: FunctionComponent<{}> = () => {
     setCurrentOrgIndex(index)
   }
   return (
-    <PageShell isLight={true}>
+    <PageShell islight={true}>
       <Container maxWidth="lg">
         <BodyText1>
           Mobile Toolbox comprises a team of clinical colleagues, cognition
@@ -306,15 +334,19 @@ const AboutUs: FunctionComponent<{}> = () => {
           success in multiple large-scale validation and development projects.
         </BodyText1>
         <StyledH1>Pur Partners</StyledH1>
-        <LogoContainer>
-          <Northwestern_Logo /> <SageBio_Logo />
-          <PenState_Logo />
+        <LogoContainer rowIndex={1}>
+          {Array.from(orgImages.keys())
+            .slice(0, 3)
+            .map((src, index) => (
+              <img src={src} alt={orgImages.get(src)} key={src} />
+            ))}
         </LogoContainer>
-        <LogoContainer>
-          hi
-          <PenState_Logo /> <SageBio_Logo />
-          <SageBio_Logo />
-          <SageBio_Logo />
+        <LogoContainer rowIndex={2}>
+          {Array.from(orgImages.keys())
+            .slice(3, 8)
+            .map((src, index) => (
+              <img src={src} alt={orgImages.get(src)} key={src} />
+            ))}
         </LogoContainer>
 
         <StyledH1>Select a Partner to View Our Contributors</StyledH1>
@@ -356,7 +388,9 @@ const AboutUs: FunctionComponent<{}> = () => {
           <Contributors id="right">
             <Photos>
               {data[currentOrgIndex].people.map((person, index) => (
-                <PhotoContainer>
+                <PhotoContainer
+                  key={person.name + index}
+                  onClick={() => setCurrentContributor(person)}>
                   <StyledTooltip
                     arrow
                     placement="bottom"

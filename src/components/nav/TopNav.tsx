@@ -9,7 +9,7 @@ import {NavLink} from 'react-router-dom'
 import LoginLink from './LoginLink'
 import MobileNav from './MobileNav'
 
-const StyledLink = styled('span')<{isLight?: boolean}>(({theme, isLight}) => ({
+const StyledLink = styled('span')<{islight?: boolean}>(({theme, islight}) => ({
   '&>a': {
     margin: theme.spacing(5),
     padding: theme.spacing(0.5, 0),
@@ -18,14 +18,14 @@ const StyledLink = styled('span')<{isLight?: boolean}>(({theme, isLight}) => ({
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '18px',
-    color: isLight ? colors.neutralsBlack : theme.palette.common.white,
+    color: islight ? colors.neutralsBlack : theme.palette.common.white,
     '&:last-child': {
       marginRight: 0,
     },
     '&:hover': {
       paddingTop: '2px',
       paddingBottom: '1px',
-      borderBottom: isLight
+      borderBottom: islight
         ? `1px solid ${colors.neutralsBlack}`
         : `1px solid ${theme.palette.common.white}`,
     },
@@ -34,12 +34,12 @@ const StyledLink = styled('span')<{isLight?: boolean}>(({theme, isLight}) => ({
 
 type AppTopNavProps = {
   routes: {name: string; path: string}[]
-  isLight?: boolean
+  islight?: boolean
 }
 
 const TopNav: FunctionComponent<AppTopNavProps> = ({
   routes,
-  isLight,
+  islight,
 
   ...props
 }: AppTopNavProps) => {
@@ -48,7 +48,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
     <>
       <Hidden lgUp>
         <MobileNav
-          isLight={isLight}
+          islight={islight}
           routes={routes.filter(route => route.name)}
         />
       </Hidden>
@@ -57,7 +57,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
           sx={{
             height: '104px',
             display: 'flex',
-            backgroundColor: isLight
+            backgroundColor: islight
               ? colors.neutralsWhite
               : colors.primaryBlue,
             alignItems: 'center',
@@ -66,7 +66,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
             px: 10,
             py: 5,
           }}>
-          {isLight ? (
+          {islight ? (
             <LogoLight title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
           ) : (
             <Logo title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
@@ -82,7 +82,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
             {routes
               .filter(r => !!r.name)
               .map(route => (
-                <StyledLink isLight={isLight} key={route.path}>
+                <StyledLink islight={islight} key={route.path}>
                   <NavLink
                     to={route.path}
                     key={route.name}
@@ -93,7 +93,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
                   </NavLink>
                 </StyledLink>
               ))}
-            <StyledLink isLight={isLight}>
+            <StyledLink islight={islight}>
               <LoginLink key="loginLink" />
             </StyledLink>
           </Toolbar>

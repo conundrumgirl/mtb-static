@@ -1,19 +1,17 @@
 //import MobileDrawerMenuHeader from '@components/widgets/MobileDrawerMenuHeader'
-import { ReactComponent as Logo } from '@assets/mtb_logo_static.svg';
-import ClearIcon from '@mui/icons-material/Clear';
-import Menu from '@mui/icons-material/Menu';
-import { Box, Drawer, IconButton, Link } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { colors, latoFont } from '@style/theme';
-import React, { FunctionComponent } from 'react';
-import { NavLink } from 'react-router-dom';
-import LoginLink from './LoginLink';
-
+import {ReactComponent as Logo} from '@assets/mtb_logo_static.svg'
+import ClearIcon from '@mui/icons-material/Clear'
+import Menu from '@mui/icons-material/Menu'
+import {Box, Drawer, IconButton, Link} from '@mui/material'
+import {styled} from '@mui/material/styles'
+import {colors, latoFont} from '@style/theme'
+import React, {FunctionComponent} from 'react'
+import {NavLink} from 'react-router-dom'
+import LoginLink from './LoginLink'
 
 const drawerWidth = '200px'
 
-const OpenMobileMenuButton = styled(IconButton)(({ theme, color }) => ({
-
+const OpenMobileMenuButton = styled(IconButton)(({theme, color}) => ({
   marginRight: theme.spacing(2),
   float: 'right',
   display: 'block',
@@ -24,11 +22,9 @@ const OpenMobileMenuButton = styled(IconButton)(({ theme, color }) => ({
     display: 'table',
     clear: 'both',
   },
-}
-))
+}))
 
-
-const StyledLink = styled('span')(({ theme }) => ({
+const StyledLink = styled('span')(({theme}) => ({
   display: 'block',
   '&>a': {
     margin: theme.spacing(2, 0),
@@ -44,17 +40,13 @@ const StyledLink = styled('span')(({ theme }) => ({
       marginRight: 0,
     },
     '&:hover': {
-
       backgroundColor: '#fff',
       color: colors.primaryBlue,
-
-    }
-  }
-
-
+    },
+  },
 }))
 
-const DrawerBox = styled(Drawer)(({ theme }) => ({
+const DrawerBox = styled(Drawer)(({theme}) => ({
   width: drawerWidth,
   flexShrink: 0,
 
@@ -62,80 +54,78 @@ const DrawerBox = styled(Drawer)(({ theme }) => ({
     width: drawerWidth,
     backgroundColor: colors.primaryDarkBlue, //'#F8F8F8',
   },
-
 }))
 
-type Routes = { name: string; path: string }[]
+type Routes = {name: string; path: string}[]
 
-const MobileNav: FunctionComponent<{ routes: Routes, isLight?: boolean }> = (
-
-  { routes, isLight }
-) => {
-
+const MobileNav: FunctionComponent<{routes: Routes; islight?: boolean}> = ({
+  routes,
+  islight,
+}) => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false)
-
 
   return (
     <>
-
       {' '}
       <OpenMobileMenuButton
-        color={isLight ? 'primary' : 'inherit'}
+        color={islight ? 'primary' : 'inherit'}
         aria-label="Open drawer"
         edge="end"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-
         size="large">
         <Menu />
       </OpenMobileMenuButton>
-      <Box sx={{
-        width: drawerWidth,
-        flexShrink: 0
-      }}>
+      <Box
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+        }}>
         <DrawerBox
           variant="temporary"
           anchor="right"
           open={isMobileOpen}
           onClose={() => setIsMobileOpen(false)}
-          classes={{
-            // paper: classes.drawerPaper,
-          }}
+          classes={
+            {
+              // paper: classes.drawerPaper,
+            }
+          }
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}>
-
-          <Box display="flex" mt={2} flexDirection="row"
+          <Box
+            display="flex"
+            mt={2}
+            flexDirection="row"
             justifyContent="space-between"
             alignItems="flex-start">
-
             <Link
-              sx={{ ml: 3, width: '120px' }}
+              sx={{ml: 3, width: '120px'}}
               target="_blank"
               href="https://www.mobiletoolbox.org"
-              className={''/*classes.mobileToolBarLink*/}>
+              className={'' /*classes.mobileToolBarLink*/}>
               <Logo />
             </Link>
-            <ClearIcon
-              onClick={() => setIsMobileOpen(false)}
-            />
+            <ClearIcon onClick={() => setIsMobileOpen(false)} />
           </Box>
 
-          {routes.filter(r => !!r.name).map(route => (
-            <StyledLink>
-              <NavLink
-                to={route.path}
-                key={route.name}
-                style={({ isActive }) => ({ fontWeight: isActive ? 'bold' : 'normal' })}
-              >
-
-                {route.name}
-              </NavLink>
-            </StyledLink>
-          ))}
-          <StyledLink >
+          {routes
+            .filter(r => !!r.name)
+            .map(route => (
+              <StyledLink>
+                <NavLink
+                  to={route.path}
+                  key={route.name}
+                  style={({isActive}) => ({
+                    fontWeight: isActive ? 'bold' : 'normal',
+                  })}>
+                  {route.name}
+                </NavLink>
+              </StyledLink>
+            ))}
+          <StyledLink>
             <LoginLink key="loginLink" />
           </StyledLink>
-
         </DrawerBox>
       </Box>
     </>

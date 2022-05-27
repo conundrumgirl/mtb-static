@@ -1,16 +1,15 @@
-import { ReactComponent as Logo } from '@assets/mtb_logo_static.svg'
-import { ReactComponent as LogoLight } from '@assets/mtb_logo_static_blue.svg'
-import { Box, Hidden } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import {ReactComponent as Logo} from '@assets/mtb_logo_static.svg'
+import {ReactComponent as LogoLight} from '@assets/mtb_logo_static_blue.svg'
+import {Box, Hidden} from '@mui/material'
+import {styled} from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
-import theme, { colors, latoFont } from '@style/theme'
-import React, { FunctionComponent } from 'react'
-import { NavLink } from 'react-router-dom'
+import theme, {colors, latoFont} from '@style/theme'
+import React, {FunctionComponent} from 'react'
+import {NavLink} from 'react-router-dom'
 import LoginLink from './LoginLink'
 import MobileNav from './MobileNav'
 
-
-const StyledLink = styled('span')<{ isLight?: boolean }>(({ theme, isLight }) => ({
+const StyledLink = styled('span')<{isLight?: boolean}>(({theme, isLight}) => ({
   '&>a': {
     margin: theme.spacing(5),
     padding: theme.spacing(0.5, 0),
@@ -26,16 +25,16 @@ const StyledLink = styled('span')<{ isLight?: boolean }>(({ theme, isLight }) =>
     '&:hover': {
       paddingTop: '2px',
       paddingBottom: '1px',
-      borderBottom: isLight ? `1px solid ${colors.neutralsBlack}` : `1px solid ${theme.palette.common.white}`,
-    }
-  }
+      borderBottom: isLight
+        ? `1px solid ${colors.neutralsBlack}`
+        : `1px solid ${theme.palette.common.white}`,
+    },
+  },
 }))
 
-
 type AppTopNavProps = {
-  routes: { name: string; path: string; }[],
+  routes: {name: string; path: string}[]
   isLight?: boolean
-
 }
 
 const TopNav: FunctionComponent<AppTopNavProps> = ({
@@ -48,49 +47,52 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
   return (
     <>
       <Hidden lgUp>
-        <MobileNav isLight={isLight} routes={routes.filter(route => route.name)}
+        <MobileNav
+          isLight={isLight}
+          routes={routes.filter(route => route.name)}
         />
-
       </Hidden>
       <Hidden lgDown>
-        <Box sx={{
-          height: '104px',
-          display: 'flex',
-          backgroundColor: isLight ? colors.neutralsWhite : colors.primaryBlue,
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          px: 10,
-          py: 5
-        }}>
-          {
-            isLight ?
-              <LogoLight
-                title="Mobile Toolbox"
-                style={{ paddingLeft: '16px' }}
-              /> :
-              <Logo
-                title="Mobile Toolbox"
-                style={{ paddingLeft: '16px' }}
-              />}
+        <Box
+          sx={{
+            height: '104px',
+            display: 'flex',
+            backgroundColor: isLight
+              ? colors.neutralsWhite
+              : colors.primaryBlue,
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            px: 10,
+            py: 5,
+          }}>
+          {isLight ? (
+            <LogoLight title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
+          ) : (
+            <Logo title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
+          )}
           <Toolbar
             component="nav"
             variant="dense"
             disableGutters
             sx={{
               padding: theme.spacing(4, 4),
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
             }}>
-            {routes.filter(r => !!r.name).map(route => (
-              <StyledLink isLight={isLight}>
-                <NavLink
-                  to={route.path}
-                  key={route.name}
-                  style={({ isActive }) => ({ fontWeight: isActive ? 'bold' : 400 })}>
-                  {route.name}
-                </NavLink>
-              </StyledLink>
-            ))}
+            {routes
+              .filter(r => !!r.name)
+              .map(route => (
+                <StyledLink isLight={isLight} key={route.path}>
+                  <NavLink
+                    to={route.path}
+                    key={route.name}
+                    style={({isActive}) => ({
+                      fontWeight: isActive ? 'bold' : 400,
+                    })}>
+                    {route.name}
+                  </NavLink>
+                </StyledLink>
+              ))}
             <StyledLink isLight={isLight}>
               <LoginLink key="loginLink" />
             </StyledLink>

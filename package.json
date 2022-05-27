@@ -46,6 +46,7 @@
     "@types/react-dom": "latest",
     "@types/styled-components": "latest",
     "craco-alias": "^3.0.1",
-    "typescript": "latest"
+    "typescript": "latest",
+    "typescript-plugin-styled-components": "^2.0.0"
   }
 }

@@ -3,27 +3,27 @@ import OfficialMobileToolboxVersion from '@assets/official_mobile_toolbox_icon.s
 import ScientificallyValidatedIcon from '@assets/validated.svg'
 import Loader from '@components/widgets/Loader'
 import PageShell from '@components/widgets/PageShell'
-import { useAsync } from '@helpers/AsyncHook'
+import {useAsync} from '@helpers/AsyncHook'
 import {
   Box,
   Button,
   Container,
   Divider,
   Grid,
-  Hidden, styled,
+  Hidden,
+  styled,
   ThemeProvider,
-  Typography
+  Typography,
 } from '@mui/material'
 import AssessmentService from '@services/assessment.service'
-import theme, { colors, playfairDisplayFont, poppinsFont } from '@style/theme'
-import { Assessment } from '@typedefs/types'
-import React, { FunctionComponent } from 'react'
-import { useParams } from 'react-router-dom'
+import theme, {colors, playfairDisplayFont, poppinsFont} from '@style/theme'
+import {Assessment} from '@typedefs/types'
+import React, {FunctionComponent} from 'react'
+import {useParams} from 'react-router-dom'
 import BreadCrumb from '../widgets/BreadCrumb'
 import AssessmentImage from './AssessmentImage'
 
-
-const ImageTextRow = styled(Box)(({ theme }) => ({
+const ImageTextRow = styled(Box)(({theme}) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -33,24 +33,22 @@ const ImageTextRow = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(2.5),
 }))
 
-const InfoTextInContainer = styled(Box)(({ theme }) => ({
+const InfoTextInContainer = styled(Box)(({theme}) => ({
   fontSize: '14px',
   lineHeight: '18px',
   fontFamily: poppinsFont,
 }))
 
-const StyledDivider = styled(Divider)(({ theme }) => ({
+const StyledDivider = styled(Divider)(({theme}) => ({
   marginTop: theme.spacing(5),
   marginBottom: theme.spacing(5),
   width: '100%',
-  backgroundColor: colors.neutralsBlack
-
+  backgroundColor: colors.neutralsBlack,
 }))
 
 type AssessmentDetailProps = {}
 
 const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
-
   const links = [
     {
       url: '/assessments',
@@ -58,9 +56,9 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
     },
   ]
 
-  let { id } = useParams<{ id: string }>()
+  let {id} = useParams<{id: string}>()
 
-  const { data, status, error, run } = useAsync<Assessment>({
+  const {data, status, error, run} = useAsync<Assessment>({
     status: 'PENDING',
     data: null,
   })
@@ -73,7 +71,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
     ///your async call
     return run(
       (async function (id) {
-        const { assessments } =
+        const {assessments} =
           await AssessmentService.getAssessmentsWithResources(id)
         if (assessments.length === 0) {
           throw new Error('no assessment found')
@@ -88,65 +86,69 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
   } else if (status === 'REJECTED') {
     return <>error</>
   } else {
-
-    const Header = (<>
-      <Typography
-        variant="h2"
-        sx={{
-          fontFamily: playfairDisplayFont,
-          fontStyle: 'italic',
-          fontSize: '20px',
-          lineHeight: '20px',
-          marginBottom: theme.spacing(4)
-        }}>
-
-        {data.tags.join(', ')}
-      </Typography>
-      <Box my={5} sx={{
-        fontFamily: 'Lato',
-        fontSize: '32px',
-        fontWeight: 'bold',
-
-
-      }}>{data.title}</Box></>)
+    const Header = (
+      <>
+        <Typography
+          variant="h2"
+          sx={{
+            fontFamily: playfairDisplayFont,
+            fontStyle: 'italic',
+            fontSize: '20px',
+            lineHeight: '20px',
+            marginBottom: theme.spacing(4),
+          }}>
+          {data.tags.join(', ')}
+        </Typography>
+        <Box
+          my={5}
+          sx={{
+            fontFamily: 'Lato',
+            fontSize: '32px',
+            fontWeight: 'bold',
+          }}>
+          {data.title}
+        </Box>
+      </>
+    )
 
     return (
-      <PageShell isLight={true} >
-
-
-        <Container maxWidth="md" sx={{
-          textAlign: 'center',
-          paddingBottom: theme.spacing(6),
-          backgroundColor: '#fff',
-          color: colors.neutralsBlack,
-          minHeight: '100vh'
-        }}>
-          <Box sx={{
-            padding: theme.spacing(0, 5, 0, 3),
-            boxShadow: '0 0 0 0',
-            marginBottom: 8
+      <PageShell islight={true}>
+        <Container
+          maxWidth="md"
+          sx={{
+            textAlign: 'center',
+            paddingBottom: theme.spacing(6),
+            backgroundColor: '#fff',
+            color: colors.neutralsBlack,
+            minHeight: '100vh',
           }}>
-            <BreadCrumb links={links} ></BreadCrumb>
+          <Box
+            sx={{
+              padding: theme.spacing(0, 5, 0, 3),
+              boxShadow: '0 0 0 0',
+              marginBottom: 8,
+            }}>
+            <BreadCrumb links={links}></BreadCrumb>
           </Box>
 
-          <InfoTextInContainer sx={{ color: colors.neutralsBlack }} >
-
-            <Grid container spacing={'32px'} sx={{
-              padding: theme.spacing(7.5),
-              borderRadius: '0px'
-            }}>
+          <InfoTextInContainer sx={{color: colors.neutralsBlack}}>
+            <Grid
+              container
+              spacing={'32px'}
+              sx={{
+                padding: theme.spacing(7.5),
+                borderRadius: '0px',
+              }}>
               <Grid item xs={12} lg={6}>
-                <Box maxWidth="530px" style={{ textAlign: 'left' }}>
+                <Box maxWidth="530px" style={{textAlign: 'left'}}>
                   <Hidden lgUp>
                     {/*  */}
                     {Header}
-
                   </Hidden>
                   <AssessmentImage
                     name={`${data.title}_img`}
                     resources={data.resources}
                     variant="detail"></AssessmentImage>
-
 
                   <ThemeProvider theme={theme}>
                     <Box mt={5}>
@@ -160,27 +162,23 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
                       </Button>
                     </Box>
                   </ThemeProvider>
-
                 </Box>
               </Grid>
               <Grid item xs={12} lg={6}>
                 <Box textAlign="left">
-                  <Hidden lgDown>
-                    {Header}
-                  </Hidden>
+                  <Hidden lgDown>{Header}</Hidden>
                   <Box>{data.summary}</Box>
                   <StyledDivider />
-                  <ImageTextRow
-                    sx={{ marginLeft: theme.spacing(2) }}>
+                  <ImageTextRow sx={{marginLeft: theme.spacing(2)}}>
                     <img
                       style={{
                         marginRight: theme.spacing(1),
                         width: '24px',
-                        height: '24px'
+                        height: '24px',
                       }}
                       src={ScientificallyValidatedIcon}
                       alt="scientifically_validated_icon"></img>
-                    <Typography component="span" >
+                    <Typography component="span">
                       Scientifically Validated
                     </Typography>
                   </ImageTextRow>
@@ -189,11 +187,11 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
                       style={{
                         marginRight: '8px',
                         width: '20px',
-                        height: '20px'
+                        height: '20px',
                       }}
                       src={OfficialMobileToolboxVersion}
                       alt="official_mobile_toolbox_icon"></img>
-                    <Typography component="span" >
+                    <Typography component="span">
                       Official Mobile Toolbox version
                     </Typography>
                   </ImageTextRow>
@@ -202,19 +200,18 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
                       style={{
                         marginRight: '8px',
                         width: '20px',
-                        height: '20px'
+                        height: '20px',
                       }}
                       src={ClockIcon}
                       alt="clock_icon"></img>
-                    <Typography component="span" >
+                    <Typography component="span">
                       {data.minutesToComplete} min
                     </Typography>
                   </ImageTextRow>
                   {/* <div className={classes.informationText}>[Age: 18 +]</div>*/}
                   <StyledDivider />
 
-
-                  <div style={{ width: '100px' }}>Designed By:</div>
+                  <div style={{width: '100px'}}>Designed By:</div>
                   <div>
                     {correctResource && correctResource.creators
                       ? correctResource.creators.join(', ')
@@ -233,12 +230,9 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
             </Grid>
           </InfoTextInContainer>
         </Container>
-
-      </PageShell  >
-
+      </PageShell>
     )
   }
-
 }
 
 export default AssessmentDetail

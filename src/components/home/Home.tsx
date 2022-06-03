@@ -49,10 +49,10 @@ const Home: FunctionComponent = () => {
               {/*header */}
               <Grid item xs={12} lg={6}>
                 <Item >
-                  <Typography variant="h1" >Mobile Toolbox!</Typography>
+                  <Typography variant="h1" >Mobile Toolbox</Typography>
                   <Typography variant="h3" color={theme.palette.text.secondary} mb={15}
                   >
-                    A comprehensive research and analytics platform to launch fully remote, smartphone app-based cognitive assessment studies. Mobile Toolbox delivers validated cognitive assessments that are developed and validated by experts in the field of cognitive research.
+                    Mobile Toolbox delivers cognitive tests to research study participants through a smartphone app, allowing researchers to conduct studies remotely. Our mission is to create a growing library of well characterized and validated cognitive measures widely available and easy to  use by the entire research community.
                   </Typography>
                 </Item>
               </Grid>

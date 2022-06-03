@@ -54,32 +54,32 @@ const info = [
   {
     title: 'How it works',
     intro:
-      'A Study Designer selects the assessments and designs the schedule for a study.',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis bibendum senectus amet diam dui felis est dolor tincidunt. Blandit penatibus odio viverra est nisl ut velit feugiat donec. Pulvinar nullam amet suspendisse faucibus auctor ac tellus. Sed cras dictum at volutpat. Scelerisque sem pharetra ac turpis ipsum condimentum a mattis amet.',
+      ' A Study Designer selects the assessments, designs the schedule, and saves the study configuration.',
+    body: 'The Mobile Toolbox Study Builder supports flexible scheduling of assessments to meet most single-arm protocol requirements. Schedules can include dates for custom events such as clinic visits.',
     link: 'www.google.com',
     image: <Step1 width="100%" />,
   },
   {
     title: 'How it works',
     intro:
-      ' A Study Coordinator recruits participants to the study and auto-distributes the study to the App Store',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis bibendum senectus amet diam dui felis est dolor tincidunt. Blandit penatibus odio viverra est nisl ut velit feugiat donec. Pulvinar nullam amet suspendisse faucibus auctor ac tellus. Sed cras dictum at volutpat. Scelerisque sem pharetra ac turpis ipsum condimentum a mattis amet.',
+      ' A Study Coordinator recruits participants to the study and invites them to download the App.',
+    body: 'Participants receive login information to use with their iOS or Android smartphone. They always have access to study and privacy information within the App.',
     link: 'www.google.com',
     image: <Step2 width="100%" />,
   },
   {
     title: 'How it works',
     intro:
-      'Study participants download the App and perform remote cognitive assessments using their own smartphone.',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis bibendum senectus amet diam dui felis est dolor tincidunt. Blandit penatibus odio viverra est nisl ut velit feugiat donec. Pulvinar nullam amet suspendisse faucibus auctor ac tellus. Sed cras dictum at volutpat. Scelerisque sem pharetra ac turpis ipsum condimentum a mattis amet.',
+      ' Study participants download the App, register for the study, and perform remote cognitive assessments using a smartphone.',
+    body: 'Participants can see their upcoming and past activities in the App. They can optionally receive reminder notifications. ',
     link: 'www.google.com',
     image: <Step3 width="100%" />,
   },
   {
     title: 'How it works',
-    intro: 'Data is uploaded to the Sage platform and made ready for analysis.',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis bibendum senectus amet diam dui felis est dolor tincidunt. Blandit penatibus odio viverra est nisl ut velit feugiat donec. Pulvinar nullam amet suspendisse faucibus auctor ac tellus. Sed cras dictum at volutpat. Scelerisque sem pharetra ac turpis ipsum condimentum a mattis amet.',
-    link: 'www.google.com',
+    intro: ' Data is uploaded to the Mobile Toolbox platform and made ready for analysis. ',
+    body: 'Data is encrypted and uploaded from each participant’s phone while it is connected to the internet with a WiFi or cellular data connection. Data is processed and curated and is available under controlled access.',
+   link: 'www.google.com',
     image: <Step4 width="100%" />,
   },
 ]
@@ -104,10 +104,10 @@ export const HowItWorksDesktop: FunctionComponent = () => {
               </Typography>
               <Intro>{item.intro}</Intro>
               <Body>{item.body}</Body>
-              <LearnMoreLink to={item.link}>
+              /*<LearnMoreLink to={item.link}>
                 Learn More&nbsp;&nbsp;
                 <MoreArrow />
-              </LearnMoreLink>
+              </LearnMoreLink> */
             </Item>
           </Grid>
           <Grid item xs={12} lg={6}>
@@ -131,10 +131,10 @@ export const HowItWorksMobile: FunctionComponent = () => {
       </Typography>
       <Intro>{item.intro}</Intro>
       <Body>{item.body}</Body>
-      <LearnMoreLink to={item.link}>
+      /* <LearnMoreLink to={item.link}>
         Learn More&nbsp;&nbsp;
         <MoreArrow />
-      </LearnMoreLink>
+      </LearnMoreLink> */
 
       <div key={index}>{item.image}</div>
     </Box>

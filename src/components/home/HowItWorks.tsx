@@ -1,19 +1,18 @@
-import { ReactComponent as Step1 } from '@assets/home_step1.svg'
-import { ReactComponent as Step2 } from '@assets/home_step2.svg'
-import { ReactComponent as Step3 } from '@assets/home_step3.svg'
-import { ReactComponent as Step4 } from '@assets/home_step4.svg'
-import { ReactComponent as MoreArrow } from '@assets/more_arrow.svg'
-import { Grid, Typography } from '@mui/material'
+import {ReactComponent as Step1} from '@assets/home_step1.svg'
+import {ReactComponent as Step2} from '@assets/home_step2.svg'
+import {ReactComponent as Step3} from '@assets/home_step3.svg'
+import {ReactComponent as Step4} from '@assets/home_step4.svg'
+import {Grid, Typography} from '@mui/material'
 import Box from '@mui/material/Box'
-import { styled } from '@mui/material/styles'
-import { colors, latoFont } from '@style/theme'
+import {styled} from '@mui/material/styles'
+import {colors, latoFont} from '@style/theme'
 import * as React from 'react'
-import { FunctionComponent } from 'react'
-import { Link } from 'react-router-dom'
+import {FunctionComponent} from 'react'
+import {Link} from 'react-router-dom'
 import Carousel from '../widgets/Carousel'
+/*import { ReactComponent as MoreArrow } from '@assets/more_arrow.svg'*/
 
-const Item = styled('div')<{ test?: number }>(({ theme, test }) => ({
-
+const Item = styled('div')<{test?: number}>(({theme, test}) => ({
   padding: theme.spacing(1),
 
   textAlign: 'left',
@@ -22,14 +21,14 @@ const Item = styled('div')<{ test?: number }>(({ theme, test }) => ({
   borderRadius: 0,
 }))
 
-const Intro = styled('p')(({ theme }) => ({
+const Intro = styled('p')(({theme}) => ({
   py: 7,
   fontSize: '24px',
   lineHeight: '29px',
   opacity: 0.6,
 }))
 
-const LearnMoreLink = styled(Link)(({ theme }) => ({
+const LearnMoreLink = styled(Link)(({theme}) => ({
   color: colors.accent,
   fontSize: '14px',
   textDecoration: 'none',
@@ -40,7 +39,7 @@ const LearnMoreLink = styled(Link)(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const Body = styled('p')(({ theme }) => ({
+const Body = styled('p')(({theme}) => ({
   fontFamily: latoFont,
   fontStyle: 'normal',
   fontWeight: 300,
@@ -77,9 +76,10 @@ const info = [
   },
   {
     title: 'How it works',
-    intro: ' Data is uploaded to the Mobile Toolbox platform and made ready for analysis. ',
+    intro:
+      ' Data is uploaded to the Mobile Toolbox platform and made ready for analysis. ',
     body: 'Data is encrypted and uploaded from each participant’s phone while it is connected to the internet with a WiFi or cellular data connection. Data is processed and curated and is available under controlled access.',
-   link: 'www.google.com',
+    link: 'www.google.com',
     image: <Step4 width="100%" />,
   },
 ]
@@ -88,8 +88,8 @@ export const HowItWorksDesktop: FunctionComponent = () => {
   return (
     <Grid
       container
-      columnSpacing={{ xs: 0, lg: 15 }}
-      rowSpacing={{ xs: 2, lg: 59 }}
+      columnSpacing={{xs: 0, lg: 15}}
+      rowSpacing={{xs: 2, lg: 59}}
       justifyContent="space-between"
       alignItems="center">
       {info.map((item, index) => (
@@ -99,19 +99,19 @@ export const HowItWorksDesktop: FunctionComponent = () => {
               <Typography variant="h2" mb={12}>
                 {item.title}
               </Typography>
-              <Typography variant="h1" sx={{ color: '#37E7E7' }}>
+              <Typography variant="h1" sx={{color: '#37E7E7'}}>
                 0{index + 1}
               </Typography>
               <Intro>{item.intro}</Intro>
               <Body>{item.body}</Body>
-              /*<LearnMoreLink to={item.link}>
+              {/*<LearnMoreLink to={item.link}>
                 Learn More&nbsp;&nbsp;
                 <MoreArrow />
-              </LearnMoreLink> */
+      </LearnMoreLink> */}
             </Item>
           </Grid>
           <Grid item xs={12} lg={6}>
-            <Item sx={{ textAlign: { xs: 'center', md: 'right' } }}>
+            <Item sx={{textAlign: {xs: 'center', md: 'right'}}}>
               {item.image}
             </Item>
           </Grid>
@@ -131,11 +131,12 @@ export const HowItWorksMobile: FunctionComponent = () => {
       </Typography>
       <Intro>{item.intro}</Intro>
       <Body>{item.body}</Body>
-      /* <LearnMoreLink to={item.link}>
+      {/*{' '}
+      <LearnMoreLink to={item.link}>
         Learn More&nbsp;&nbsp;
         <MoreArrow />
-      </LearnMoreLink> */
-
+      </LearnMoreLink>{' '}
+  */}
       <div key={index}>{item.image}</div>
     </Box>
   ))

@@ -179,7 +179,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
                       src={ScientificallyValidatedIcon}
                       alt="scientifically_validated_icon"></img>
                     <Typography component="span">
-                      Scientifically Validated
+                      Validation and Norming in progress
                     </Typography>
                   </ImageTextRow>
                   <ImageTextRow>

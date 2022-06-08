@@ -1,4 +1,5 @@
-import {alpha, createTheme, Theme} from '@mui/material/styles'
+import {createTheme, Theme} from '@mui/material/styles'
+import {TypographyOptions} from '@mui/material/styles/createTypography'
 import {CSSProperties} from 'react'
 
 export const openSansFont = [
@@ -38,15 +39,21 @@ export const latoFont = ['Lato', 'Roboto', 'Helvetica', 'Arial'].join(',')
 export const poppinsFont = ['Poppins', 'sans-serif'].join(',')
 
 export const colors = {
-  primaryDarkBlue: '#072751', //Primary_DarkBlue
-  primaryBlue: '#154078', //Primary_Blue
-  primaryLightBlue: '#2E84F6', // Primary_LightBlue
-  primaryGreenBlue: '#5CB4D3', //Primary_GreenBlue
-  accent: '#37E7E7', //Accent
+  gray900: '#353A3F',
+  gray800: '#4A5056',
+  secondaryRed: '#C22E49',
+
+  primaryPurple: '#4F527D',
+  purpleTransparency: '#EDEEF2',
+  purpleTransparency2: '#FAFAFB',
+
   neutralsWhite: '#fff',
-  neutralsBlack: '#383948',
-  neutralsWhiteBlue: '#F6F5FF',
-  neutralsGray: '#375074', //Neutrals_Gray
+
+  accentBlue: '#47A4DD',
+  accentGreen: ' #63A650',
+
+  accentPurple: '#9499C7',
+  neutralsBlack: '#353A3F',
 }
 
 /* exemple module overridedeclare module '@mui/material/Button' {
@@ -54,6 +61,17 @@ export const colors = {
     dashed: true;
   }
 }*/
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    smallItalic: true
+    largeBodyCopy: true
+  }
+}
+interface ExtendedTypographyOptions extends TypographyOptions {
+  smallItalic: React.CSSProperties
+  largeBodyCopy: React.CSSProperties
+}
 
 const staticPagesTheme: Theme = createTheme({
   breakpoints: {
@@ -67,11 +85,11 @@ const staticPagesTheme: Theme = createTheme({
   },
   palette: {
     text: {
-      primary: colors.neutralsWhite,
-      secondary: alpha(colors.neutralsWhite, 0.6),
+      primary: colors.gray900,
+      // secondary: alpha(colors.neutralsWhite, 0.6),
     },
     background: {
-      default: colors.primaryBlue,
+      default: '#fff',
     },
     common: {
       white: '#fff', //Neutrals_White
@@ -79,7 +97,7 @@ const staticPagesTheme: Theme = createTheme({
     },
 
     primary: {
-      dark: '#072751', //Primary_DarkBlue
+      dark: colors.gray900, //Primary_DarkBlue
       main: '#154078', //Primary_Blue
       light: '#2E84F6', // Primary_LightBlue
       contrastText: '#5CB4D3', //Primary_GreenBlue
@@ -90,36 +108,69 @@ const staticPagesTheme: Theme = createTheme({
   },
   spacing: 4,
   typography: {
+    smallItalic: {
+      fontStyle: 'italic',
+      fontWeight: '400',
+      fontSize: '14px',
+      lineHeight: '18px',
+    },
     fontFamily: latoFont,
+    body1: {
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: '16px',
+      lineHeight: '20px',
 
+      /* Text and UI Colors/Gray 900 */
+
+      //color: #353A3F;
+    },
+    largeBodyCopy: {
+      //fontFamily: ''Lato'',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: '20px',
+      lineHeight: '24px',
+    },
+    /*
     body2: {
       color: colors.neutralsBlack,
     },
-
+*/
     h1: {
-      fontWeight: '700',
-      fontSize: '72px',
-      lineHeight: '86px',
-      letterSpacing: '-0.02em',
-      marginBottom: '40px',
-      //  color: '#323142',
-    },
-    h2: {
+      fontStyle: 'normal',
       fontWeight: '700',
       fontSize: '48px',
       lineHeight: '58px',
-      //  color: '#323142',
+
+      /* Text and UI Colors/Gray 1000 */
+      color: ' #22252A',
     },
-    h3: {
+    h2: {
+      fontStyle: 'normal',
       fontWeight: '700',
       fontSize: '32px',
-      lineHeight: '38px',
+      lineHeight: '28px',
+      //* Text and UI Colors/Gray 1000 */
+      color: ' #22252A',
+    },
+    h3: {
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: '24px',
+      lineHeight: '24px',
+      //* Text and UI Colors/Gray 1000 */
+      color: ' #22252A',
     },
     h4: {
+      fontStyle: 'normal',
       fontWeight: '700',
-      fontSize: '24px',
+      fontSize: '14px',
+      lineHeight: '20px',
+      //* Text and UI Colors/Gray 1000 */
+      color: ' #22252A',
     },
-  },
+  } as ExtendedTypographyOptions,
 
   components: {
     MuiCssBaseline: {
@@ -128,13 +179,16 @@ const staticPagesTheme: Theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          color: colors.accent,
+          color: colors.primaryPurple,
           fontSize: '14px',
           textDecoration: 'none',
 
           display: 'flex',
           lineHeight: '14px',
           flexDirection: 'row',
+          '&:hover': {
+            color: '#383A5A',
+          },
         },
       },
     },
@@ -146,20 +200,43 @@ const staticPagesTheme: Theme = createTheme({
     },
     MuiButton: {
       styleOverrides: {
+        containedPrimary: {
+          height: '50px',
+          padding: '15px 40px',
+          textTransform: 'capitalize',
+          fontWeight: 900,
+          fontSize: '16px',
+          lineHeight: '148%',
+          color: '#fff',
+
+          background:
+            'linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #4F527D',
+          borderRadius: '54px',
+          '&:hover': {
+            backgroundColor: '#383A5A',
+          },
+          '&:focus': {
+            backgroundColor: '#383948',
+          },
+          '&.Mui-disabled': {
+            backgroundColor: '#D0D4D9',
+          },
+        },
         outlinedPrimary: {
-          border: `1px solid ${colors.primaryDarkBlue}`,
+          border: `1px solid ${colors.primaryPurple}`,
           borderRadius: '54px',
           backgroundColor: 'transparent',
           textTransform: 'none',
-          color: colors.primaryDarkBlue,
+          color: colors.primaryPurple,
           '&:hover': {
-            backgroundColor: colors.primaryDarkBlue,
-            color: colors.neutralsWhite,
+            color: '#383A5A',
+            borderColor: '#383A5A',
+            backgroundColor: colors.neutralsWhite,
           },
           '&:focus': {
-            backgroundColor: colors.neutralsBlack,
-            borderColor: colors.neutralsBlack,
-            color: colors.neutralsWhite,
+            color: '#4F527D',
+            borderColor: '#4F527D',
+            backgroundColor: colors.neutralsWhite,
           },
         },
         outlinedSecondary: {
@@ -169,12 +246,11 @@ const staticPagesTheme: Theme = createTheme({
           textTransform: 'none',
           color: colors.neutralsWhite,
           '&:hover': {
-            backgroundColor: colors.neutralsWhite,
-            color: colors.primaryDarkBlue,
+            border: `1px solid ${colors.neutralsWhite}`,
+            color: colors.neutralsWhite,
           },
           '&:focus': {
-            backgroundColor: colors.neutralsBlack,
-            borderColor: colors.neutralsBlack,
+            border: `1px solid ${colors.neutralsWhite}`,
             color: colors.neutralsWhite,
           },
         },

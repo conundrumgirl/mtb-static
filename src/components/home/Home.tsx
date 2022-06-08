@@ -1,63 +1,57 @@
-import { default as bgExperiences } from '@assets/bg_home_experiences.svg'
-import { default as bgSecurity } from '@assets/bg_home_security.svg'
+import {ReactComponent as MTBImage} from '@assets/mtb_pastel.svg'
 import PageShell from '@components/widgets/PageShell'
-import { Box, Grid, Hidden, Typography } from '@mui/material'
-import { styled } from '@mui/material/styles'
-import theme, { colors } from '@style/theme'
+import {Section} from '@components/widgets/Styled'
+import {Box, Grid, Hidden, Typography} from '@mui/material'
+import {colors} from '@style/theme'
 import * as React from 'react'
-import { FunctionComponent } from 'react'
-import About from './About'
-import Contribute from './Contribute'
-import Experiences from './Experiences'
-import { HowItWorksDesktop, HowItWorksMobile } from './HowItWorks'
+import {FunctionComponent} from 'react'
+import {HowItWorksDesktop, HowItWorksMobile} from './HowItWorks'
 import Partners from './Partners'
-import Project from './Project'
 import Science from './Science'
-import Security from './Security'
-
-
 
 // with property e.g. const Item = styled(Box)<{test?: number}>(({theme, test}) => ({
-const Item = styled(Box)<{ test?: number }>(({ theme, test }) => ({
-  color: theme.palette.text.primary,
-  background: test,
-  borderRadius: 0,
-}))
 
-
-const Section = styled(Box)(({ theme }) => ({
-  //padding: theme.spacing(10, 6),
-  maxWidth: '1180px',
-  margin: '0 auto',
-  padding: '66px 0px',
-  [theme.breakpoints.down('lg')]: {
-    paddingLeft: theme.spacing(5),
-    paddingRight: theme.spacing(5),
-  },
-}))
-
-
-const Home: FunctionComponent = () => {
+const Home: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
   return (
-    <PageShell  >
-      <Grid
-        container
-      >
+    <PageShell onJoin={onJoin}>
+      <Grid container>
         <Grid item xs={12}>
           <Section>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 4, lg: 5 }}>
+            <Grid container rowSpacing={1} columnSpacing={{xs: 4, lg: 5}}>
               {/*header */}
-              <Grid item xs={12} lg={6}>
-                <Item >
-                  <Typography variant="h1" >Mobile Toolbox</Typography>
-                  <Typography variant="h3" color={theme.palette.text.secondary} mb={15}
-                  >
-                    Mobile Toolbox delivers cognitive tests to research study participants through a smartphone app, allowing researchers to conduct studies remotely. Our mission is to create a growing library of well characterized and validated cognitive measures widely available and easy to  use by the entire research community.
-                  </Typography>
-                </Item>
+              <Grid item xs={12} lg={7}>
+                <Typography variant="h1">Mobile Toolbox</Typography>
+                <Typography
+                  variant="largeBodyCopy"
+                  maxWidth="800px"
+                  component={'p'}
+                  mb={0}
+                  mt={10}>
+                  Mobile Toolbox delivers cognitive tests to research study
+                  participants through a smartphone app, allowing researchers to
+                  conduct portions of their studies remotely. Our mission is to
+                  make a growing library of well characterized and validated
+                  cognitive measures widely available and easy to use by the
+                  entire research community.{' '}
+                </Typography>
               </Grid>
+              <Box
+                component={Grid}
+                item
+                xs={5}
+                textAlign="right"
+                display={{xs: 'none', lg: 'block'}}>
+                <MTBImage />
+              </Box>
             </Grid>
-            {/*how it works */}
+          </Section>
+          <Box sx={{backgroundColor: colors.purpleTransparency2}}>
+            <Section>
+              <Science />
+            </Section>
+          </Box>
+          {/*how it works*/}
+          <Section>
             <Hidden lgUp>
               <HowItWorksMobile />
             </Hidden>
@@ -65,47 +59,45 @@ const Home: FunctionComponent = () => {
               <HowItWorksDesktop />
             </Hidden>
           </Section>
-          <Box sx={{ backgroundColor: colors.primaryLightBlue }}>
-            <Section>
-              <Science />
-            </Section>
-          </Box>
-          <Box sx={{
-            backgroundSize: '100%',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'left bottom',
-            backgroundImage: { lg: 'url(' + bgExperiences + ')' },
-          }}>
+          {/*
+          <Box
+            sx={{
+              backgroundSize: '100%',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'left bottom',
+              backgroundImage: {lg: 'url(' + bgExperiences + ')'},
+            }}>
             <Section>
               <Experiences />
             </Section>
           </Box>
-          <Box bgcolor={colors.primaryLightBlue}
+          <Box
+            bgcolor={colors.purpleTransparency2}
             sx={{
               backgroundSize: '100%',
               backgroundRepeat: 'no-repeat',
-              backgroundImage: { lg: 'url(' + bgSecurity + ')' },
+              backgroundImage: {lg: 'url(' + bgSecurity + ')'},
             }}>
             <Section>
               <Security />
             </Section>
-          </Box>
-          <Section>
+          </Box>*/}
+          {/* <Section>
             <About />
-          </Section>
-          <Box bgcolor={colors.neutralsWhite}>
+          </Section>*/}
+          <Box bgcolor={colors.purpleTransparency2}>
             <Section>
               <Partners />
             </Section>
           </Box>
-          <Box bgcolor={colors.primaryLightBlue}>
+          {/* <Box bgcolor={colors.purpleTransparency2}>
             <Section>
               <Project />
-            </Section>
+        </Section>
           </Box>
           <Section>
             <Contribute />
-          </Section>
+          </Section>*/}
         </Grid>
       </Grid>
     </PageShell>

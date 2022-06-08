@@ -1,10 +1,10 @@
-import { ReactComponent as MoreArrow } from '@assets/more_arrow.svg'
-import { styled } from '@mui/material/styles'
-import { colors } from '@style/theme'
-import { Link, LinkProps } from 'react-router-dom'
+import {ReactComponent as MoreArrow} from '@assets/more_arrow.svg'
+import {styled} from '@mui/material/styles'
+import {colors} from '@style/theme'
+import {Link, LinkProps} from 'react-router-dom'
 
 const StyledLink = styled(Link)(({theme}) => ({
-  color: colors.accent,
+  color: colors.secondaryRed,
   fontSize: '14px',
   textDecoration: 'none',
   width: 'fit-content',
@@ -14,9 +14,9 @@ const StyledLink = styled(Link)(({theme}) => ({
   alignItems: 'center',
 
   '&:hover': {
-    color: colors.primaryDarkBlue,
+    color: colors.primaryPurple,
     '> svg path': {
-      fill: colors.primaryDarkBlue,
+      fill: colors.primaryPurple,
     },
   },
   '&:focus': {
@@ -26,9 +26,9 @@ const StyledLink = styled(Link)(({theme}) => ({
     },
   },
   '&:disabled': {
-    color: colors.neutralsWhiteBlue,
+    color: colors.gray900,
     '> svg path': {
-      fill: colors.neutralsWhiteBlue,
+      fill: colors.gray900,
     },
   },
 }))

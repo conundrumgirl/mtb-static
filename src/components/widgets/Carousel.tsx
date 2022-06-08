@@ -1,10 +1,10 @@
-import { ReactComponent as StepperArrow } from '@assets/stepper_arrow.svg'
+import {ReactComponent as StepperArrow} from '@assets/stepper_arrow.svg'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import MobileStepper from '@mui/material/MobileStepper'
-import { styled, useTheme } from '@mui/material/styles'
+import {styled, useTheme} from '@mui/material/styles'
 import * as React from 'react'
-import { FunctionComponent } from 'react'
+import {FunctionComponent} from 'react'
 import SwipeableViews from 'react-swipeable-views'
 
 const Stepper = styled(MobileStepper, {
@@ -19,7 +19,7 @@ const Stepper = styled(MobileStepper, {
     right: vPosition === 'top' ? theme.spacing(-10) : 'auto',
   },
   '& .MuiMobileStepper-dot': {
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.palette.common.black,
     width: theme.spacing(4),
     height: theme.spacing(4),
     opacity: 0.3,
@@ -85,7 +85,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({
         activeStep={activeStep}
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            <StepperArrow />
+            <StepperArrow style={{transform: 'rotate(180deg)'}} />
           </Button>
         }
         nextButton={
@@ -93,7 +93,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({
             size="small"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}>
-            <StepperArrow style={{transform: 'rotate(180deg)'}} />
+            <StepperArrow />
           </Button>
         }
       />

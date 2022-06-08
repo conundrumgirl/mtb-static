@@ -1,5 +1,5 @@
 import ClockIcon from '@assets/clock.svg'
-import OfficialMobileToolboxVersion from '@assets/official_mobile_toolbox_icon.svg'
+import mtb_a from '@assets/mtb_assessment.svg'
 import ScientificallyValidatedIcon from '@assets/validated.svg'
 import Loader from '@components/widgets/Loader'
 import PageShell from '@components/widgets/PageShell'
@@ -16,7 +16,7 @@ import {
   Typography,
 } from '@mui/material'
 import AssessmentService from '@services/assessment.service'
-import theme, {colors, playfairDisplayFont, poppinsFont} from '@style/theme'
+import theme, {colors, poppinsFont} from '@style/theme'
 import {Assessment} from '@typedefs/types'
 import React, {FunctionComponent} from 'react'
 import {useParams} from 'react-router-dom'
@@ -43,12 +43,16 @@ const StyledDivider = styled(Divider)(({theme}) => ({
   marginTop: theme.spacing(5),
   marginBottom: theme.spacing(5),
   width: '100%',
-  backgroundColor: colors.neutralsBlack,
+  backgroundColor: '#EAECEE',
 }))
 
-type AssessmentDetailProps = {}
+type AssessmentDetailProps = {
+  onJoin: () => void
+}
 
-const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
+const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
+  onJoin,
+}) => {
   const links = [
     {
       url: '/assessments',
@@ -89,30 +93,24 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
     const Header = (
       <>
         <Typography
-          variant="h2"
+          component={'p'}
           sx={{
-            fontFamily: playfairDisplayFont,
-            fontStyle: 'italic',
-            fontSize: '20px',
-            lineHeight: '20px',
+            fontWeight: '400',
+            fontSize: '14px',
+            lineHeight: '18px',
+            textTransform: 'uppercase',
             marginBottom: theme.spacing(4),
           }}>
           {data.tags.join(', ')}
         </Typography>
-        <Box
-          my={5}
-          sx={{
-            fontFamily: 'Lato',
-            fontSize: '32px',
-            fontWeight: 'bold',
-          }}>
+        <Typography variant="h2" my={5}>
           {data.title}
-        </Box>
+        </Typography>
       </>
     )
 
     return (
-      <PageShell islight={true}>
+      <PageShell islight={true} onJoin={onJoin}>
         <Container
           maxWidth="md"
           sx={{
@@ -124,9 +122,9 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
           }}>
           <Box
             sx={{
-              padding: theme.spacing(0, 5, 0, 3),
+              padding: theme.spacing(3, 5, 0, 3),
               boxShadow: '0 0 0 0',
-              marginBottom: 8,
+              marginBottom: 6,
             }}>
             <BreadCrumb links={links}></BreadCrumb>
           </Box>
@@ -189,7 +187,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = () => {
                         width: '20px',
                         height: '20px',
                       }}
-                      src={OfficialMobileToolboxVersion}
+                      src={mtb_a}
                       alt="official_mobile_toolbox_icon"></img>
                     <Typography component="span">
                       Official Mobile Toolbox version

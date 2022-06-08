@@ -5,30 +5,31 @@ import ucsandiego_logo from '@assets/about/ucsandiego.svg'
 import ucsf_logo from '@assets/about/ucsf.svg'
 import udelaware_logo from '@assets/about/udelaware.svg'
 import washu_logo from '@assets/about/washu.svg'
-import LMangravite from '@assets/l_mangravite.jpg'
-import MSliwinski from '@assets/m_sliwinski.jpg'
-import RGershon from '@assets/r_gershon.jpg'
 import sagebio_logo from '@assets/sage_bio_logo.svg'
 import PageShell from '@components/widgets/PageShell'
-import {Section} from '@components/widgets/Styled'
 import ClearIcon from '@mui/icons-material/Clear'
 import {
+  Button,
+  Container,
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTitleProps,
-  Grid,
+  Hidden,
   IconButton,
+  List,
+  ListItemButton,
+  ListItemText,
   MenuItem,
   TextField,
-  Typography,
 } from '@mui/material'
 import {buttonClasses} from '@mui/material/Button'
 import {alpha, styled} from '@mui/material/styles' //vs mui/styles
 import Tooltip, {tooltipClasses, TooltipProps} from '@mui/material/Tooltip'
 import {Box} from '@mui/system'
-import {colors, latoFont} from '@style/theme'
+import {latoFont} from '@style/theme'
 import React, {FunctionComponent} from 'react'
+import data from './about_data'
 
 const orgImages: Map<string, string> = new Map([
   [northwestern_logo, 'Northwestern University'],
@@ -316,7 +317,7 @@ type Data = {
   people: Contributor[]
 }
 
-const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
+const AboutUs: FunctionComponent<{}> = () => {
   const [currentOrgIndex, setCurrentOrgIndex] = React.useState(0)
   const [currentContributor, setCurrentContributor] = React.useState<
     Contributor | undefined
@@ -325,39 +326,29 @@ const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
     setCurrentOrgIndex(index)
   }
   return (
-    <PageShell islight={true} onJoin={onJoin}>
-      <Section>
-        <Typography variant="h2" textAlign="left" mb={6}>
-          About Us
-        </Typography>
-        <Typography variant="body1" maxWidth="700px" mb={6}>
+    <PageShell islight={true} onJoin={() => {}}>
+      <Container maxWidth="lg">
+        <BodyText1>
           Mobile Toolbox comprises a team of clinical colleagues, cognition
           researchers, measurement scientists and technical experts with proven
           success in multiple large-scale validation and development projects.
-        </Typography>
-      </Section>
-      <Box bgcolor={colors.purpleTransparency2}>
-        <Section mb={13}>
-          <Typography variant="h3" textAlign="center" mb={10}>
-            Our Partners
-          </Typography>
-          <LogoContainer rowIndex={1}>
-            {Array.from(orgImages.keys())
-              .slice(0, 3)
-              .map((src, index) => (
-                <img src={src} alt={orgImages.get(src)} key={src} />
-              ))}
-          </LogoContainer>
-          <LogoContainer rowIndex={2}>
-            {Array.from(orgImages.keys())
-              .slice(3, 8)
-              .map((src, index) => (
-                <img src={src} alt={orgImages.get(src)} key={src} />
-              ))}
-          </LogoContainer>
-        </Section>
-      </Box>
-      {/*
+        </BodyText1>
+        <StyledH1>Pur Partners</StyledH1>
+        <LogoContainer rowIndex={1}>
+          {Array.from(orgImages.keys())
+            .slice(0, 3)
+            .map((src, index) => (
+              <img src={src} alt={orgImages.get(src)} key={src} />
+            ))}
+        </LogoContainer>
+        <LogoContainer rowIndex={2}>
+          {Array.from(orgImages.keys())
+            .slice(3, 8)
+            .map((src, index) => (
+              <img src={src} alt={orgImages.get(src)} key={src} />
+            ))}
+        </LogoContainer>
+
         <StyledH1>Select a Partner to View Our Contributors</StyledH1>
         <Hidden mdUp>
           <Box textAlign="center">
@@ -446,60 +437,8 @@ const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
               <BodyText1>{data[currentOrgIndex].orgDescription}</BodyText1>
             </OrgInfo>
           </Contributors>
-        </ContributorContainer>*/}
-      <Section>
-        <Typography variant="h3" textAlign="center">
-          Our Leadership Team
-        </Typography>
-        <Grid container rowSpacing={8} mt={6} columnSpacing={{xs: 4, lg: 10}}>
-          <Grid item xs={12} lg={3} textAlign="center">
-            <img src={LMangravite} alt="Lara Mangravite" width="156px" />
-          </Grid>
-          <Grid item xs={12} lg={9}>
-            <Typography component="p" variant="body1" maxWidth="700px">
-              Lara Mangravite, PhD, is President of Sage Bionetworks, an
-              organization that focuses on open practices to advance biomedicine
-              through data-driven science and digital research. Recognizing that
-              all research is limited by restrictions placed on the distribution
-              of information, Dr. Mangravite works closely with institutes,
-              foundations and research communities to improve information flow,
-              benchmark research practices, and establish research outcomes of
-              sufficient confidence to support translation.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} lg={3} textAlign="center">
-            <img src={MSliwinski} alt="Martin Sliwinski" width="156px" />
-          </Grid>
-          <Grid item xs={12} lg={9}>
-            <Typography component="p" variant="body1" maxWidth="700px">
-              Martin Sliwinski, PhD, of Penn State University, is currently
-              leading Mobile Monitoring of Cognitive Change (M2C2), working to
-              using smartphones to measure cognitive function and subtle
-              variations in cognitive performance in the context of everyday
-              life. Dr. Sliwinski aims to develop infrastructure that provides
-              the research community with open, flexible, and usable tools to
-              enable scientific progress that depends on the sensitive and
-              accurate measurement of cognitive change.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} lg={3} textAlign="center">
-            <img src={RGershon} alt="Richard Gershon" width="156px" />
-          </Grid>
-          <Grid item xs={12} lg={9}>
-            <Typography component="p" variant="body1" maxWidth="700px">
-              Richard Gershon, PhD, of Northwestern University, is widely
-              recognized for his expertise in advancing the use of technology
-              for increasing the impact and reach of psychometrically robust
-              health measurements. Dr. Gershon is the contact principal
-              investigator for The Mobile Toolbox for Monitoring Cognitive
-              Function, MyCog: Rapid detection of cognitive impairment in
-              everyday clinical settings, and ARMADA: Advancing Reliable
-              Measurement in Alzheimer’s Disease and cognitive Aging.
-            </Typography>
-          </Grid>
-        </Grid>
-      </Section>
-
+        </ContributorContainer>
+      </Container>
       <Dialog
         open={currentContributor !== undefined}
         onClose={() => setCurrentContributor(undefined)}>

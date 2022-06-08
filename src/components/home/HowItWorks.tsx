@@ -5,10 +5,9 @@ import {ReactComponent as Step4} from '@assets/home_step4.svg'
 import {Grid, Typography} from '@mui/material'
 import Box from '@mui/material/Box'
 import {styled} from '@mui/material/styles'
-import {colors, latoFont} from '@style/theme'
+import {colors} from '@style/theme'
 import * as React from 'react'
 import {FunctionComponent} from 'react'
-import {Link} from 'react-router-dom'
 import Carousel from '../widgets/Carousel'
 /*import { ReactComponent as MoreArrow } from '@assets/more_arrow.svg'*/
 
@@ -21,15 +20,19 @@ const Item = styled('div')<{test?: number}>(({theme, test}) => ({
   borderRadius: 0,
 }))
 
-const Intro = styled('p')(({theme}) => ({
-  py: 7,
-  fontSize: '24px',
-  lineHeight: '29px',
-  opacity: 0.6,
+const StyledNumber = styled(Box)(({theme}) => ({
+  fontStyle: 'normal',
+  fontWeight: 300,
+  fontSize: '72px',
+  lineHeight: '86px',
+  display: 'flex',
+  alignItems: 'center',
+  color: colors.secondaryRed,
+  marginButtom: theme.spacing(2),
 }))
-
+/*
 const LearnMoreLink = styled(Link)(({theme}) => ({
-  color: colors.accent,
+  color: colors.secondaryRed,
   fontSize: '14px',
   textDecoration: 'none',
 
@@ -37,9 +40,9 @@ const LearnMoreLink = styled(Link)(({theme}) => ({
   lineHeight: '14px',
   flexDirection: 'row',
   alignItems: 'center',
-}))
+}))*/
 
-const Body = styled('p')(({theme}) => ({
+/*const Body = styled('p')(({theme}) => ({
   fontFamily: latoFont,
   fontStyle: 'normal',
   fontWeight: 300,
@@ -47,7 +50,7 @@ const Body = styled('p')(({theme}) => ({
   // fontSize: '14px',
   lineHeight: '17px',
   marginBottom: theme.spacing(4),
-}))
+}))*/
 
 const info = [
   {
@@ -86,38 +89,44 @@ const info = [
 
 export const HowItWorksDesktop: FunctionComponent = () => {
   return (
-    <Grid
-      container
-      columnSpacing={{xs: 0, lg: 15}}
-      rowSpacing={{xs: 2, lg: 59}}
-      justifyContent="space-between"
-      alignItems="center">
-      {info.map((item, index) => (
-        <>
-          <Grid item xs={12} lg={6} key={`${index}`}>
-            <Item>
-              <Typography variant="h2" mb={12}>
-                {item.title}
-              </Typography>
-              <Typography variant="h1" sx={{color: '#37E7E7'}}>
-                0{index + 1}
-              </Typography>
-              <Intro>{item.intro}</Intro>
-              <Body>{item.body}</Body>
-              {/*<LearnMoreLink to={item.link}>
+    <>
+      <Typography variant="h2" mb={12}>
+        How it works
+      </Typography>
+      <Grid
+        container
+        columnSpacing={{xs: 1, lg: 25}}
+        rowSpacing={{xs: 2, lg: 10}}
+        justifyContent="space-between"
+        alignItems="top">
+        {info.map((item, index) => (
+          <>
+            <Grid item xs={12} lg={6} key={`${index}`}>
+              <Item>
+                <StyledNumber>0{index + 1}</StyledNumber>
+                <Typography variant="largeBodyCopy" component={'p'} mb={4}>
+                  {item.intro}
+                </Typography>
+                <Typography variant="body1" mb={4}>
+                  {item.body}
+                </Typography>
+                {/*<LearnMoreLink to={item.link}>
                 Learn More&nbsp;&nbsp;
                 <MoreArrow />
       </LearnMoreLink> */}
-            </Item>
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <Item sx={{textAlign: {xs: 'center', md: 'right'}}}>
-              {item.image}
-            </Item>
-          </Grid>
-        </>
-      ))}
-    </Grid>
+              </Item>
+              <Item
+                sx={{
+                  textAlign: {xs: 'center', md: 'right'},
+                  marginTop: index === 0 ? 0 : 11.5,
+                }}>
+                {item.image}
+              </Item>
+            </Grid>
+          </>
+        ))}
+      </Grid>
+    </>
   )
 }
 
@@ -126,18 +135,22 @@ export const HowItWorksMobile: FunctionComponent = () => {
 
   const innerElements = info.map((item, index) => (
     <Box textAlign="left">
-      <Typography variant="h2" mb={12}>
-        {item.title}
+      <StyledNumber mb={12}>{item.title}</StyledNumber>
+      <Typography variant="largeBodyCopy" mb={4} component={'p'}>
+        {item.intro}
       </Typography>
-      <Intro>{item.intro}</Intro>
-      <Body>{item.body}</Body>
+      <Typography variant="body1" mb={4}>
+        {item.body}
+      </Typography>
       {/*{' '}
       <LearnMoreLink to={item.link}>
         Learn More&nbsp;&nbsp;
         <MoreArrow />
       </LearnMoreLink>{' '}
   */}
-      <div key={index}>{item.image}</div>
+      <Box key={index} marginTop={index === 0 ? 0 : 19.5}>
+        {item.image}
+      </Box>
     </Box>
   ))
 

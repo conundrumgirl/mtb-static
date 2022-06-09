@@ -69,7 +69,9 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
             py: 5,
             mb: 3,
           }}>
-          <LogoLight title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
+          <a href="/">
+            <LogoLight title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
+          </a>
 
           <Toolbar
             component="nav"

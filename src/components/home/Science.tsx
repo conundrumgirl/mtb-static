@@ -90,7 +90,7 @@ const Science: FunctionComponent<{}> = () => {
           <Box mb={10}>
             <Button variant="contained" color="primary" href="/about-us">
               {' '}
-              View Our Team
+              View Our Contributors
             </Button>
           </Box>
         </Grid>

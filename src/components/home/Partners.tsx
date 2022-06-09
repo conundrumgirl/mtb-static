@@ -35,7 +35,7 @@ const Partners: FunctionComponent<{}> = () => {
         </Grid>
         <Grid item xs={12} textAlign="center">
           <Button color="primary" variant="contained" href="">
-            View All Contributors
+            View Our Contributors
           </Button>
         </Grid>
       </Grid>

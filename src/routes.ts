@@ -33,12 +33,12 @@ export default [
     Component: AssessmentLibrary,
     exact: false,
   },
-  {
+  /* {
     path: '/help',
     name: 'Help',
     Component: Home, //AssessmentLibrary,
     exact: false,
-  },
+  },*/
 
   {
     path: '/assessments/:id',

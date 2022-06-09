@@ -1,12 +1,10 @@
-import {ReactComponent as Logo} from '@assets/mtb_logo_static.svg'
-import {ReactComponent as LogoLight} from '@assets/mtb_logo_static_blue.svg'
+import {ReactComponent as LogoLight} from '@assets/mtb_logo_static.svg'
 import {Box, Hidden} from '@mui/material'
 import {styled} from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
-import theme, {colors, latoFont} from '@style/theme'
+import theme, {latoFont} from '@style/theme'
 import React, {FunctionComponent} from 'react'
 import {NavLink} from 'react-router-dom'
-import LoginLink from './LoginLink'
 import MobileNav from './MobileNav'
 
 const StyledLink = styled('span')<{islight?: boolean}>(({theme, islight}) => ({
@@ -15,19 +13,22 @@ const StyledLink = styled('span')<{islight?: boolean}>(({theme, islight}) => ({
     padding: theme.spacing(0.5, 0),
     textDecoration: 'none',
     fontFamily: latoFont,
+
     fontStyle: 'normal',
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: '18px',
-    color: islight ? colors.neutralsBlack : theme.palette.common.white,
+
+    display: 'flex',
+
+    color: '#353A3F',
+
     '&:last-child': {
       marginRight: 0,
     },
     '&:hover': {
       paddingTop: '2px',
       paddingBottom: '1px',
-      borderBottom: islight
-        ? `1px solid ${colors.neutralsBlack}`
-        : `1px solid ${theme.palette.common.white}`,
+      borderBottom: `1px solid #353A3F`,
     },
   },
 }))
@@ -35,12 +36,13 @@ const StyledLink = styled('span')<{islight?: boolean}>(({theme, islight}) => ({
 type AppTopNavProps = {
   routes: {name: string; path: string}[]
   islight?: boolean
+  onJoin: () => void
 }
 
 const TopNav: FunctionComponent<AppTopNavProps> = ({
   routes,
   islight,
-
+  onJoin,
   ...props
 }: AppTopNavProps) => {
   const [menuAnchor, setMenuAnchor] = React.useState<null | HTMLElement>(null)
@@ -50,6 +52,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
         <MobileNav
           islight={islight}
           routes={routes.filter(route => route.name)}
+          onJoin={onJoin}
         />
       </Hidden>
       <Hidden lgDown>
@@ -57,20 +60,17 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
           sx={{
             height: '104px',
             display: 'flex',
-            backgroundColor: islight
-              ? colors.neutralsWhite
-              : colors.primaryBlue,
+            backgroundColor: '#FFFFFF',
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'space-between',
+            boxShadow: '0 0px 8px 0px #ddd',
             px: 10,
             py: 5,
+            mb: 3,
           }}>
-          {islight ? (
-            <LogoLight title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
-          ) : (
-            <Logo title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
-          )}
+          <LogoLight title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
+
           <Toolbar
             component="nav"
             variant="dense"
@@ -87,14 +87,15 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
                     to={route.path}
                     key={route.name}
                     style={({isActive}) => ({
-                      fontWeight: isActive ? 'bold' : 400,
+                      fontWeight: isActive ? 800 : 400,
+                      color: isActive ? '#4F527D' : ' #353A3F',
                     })}>
                     {route.name}
                   </NavLink>
                 </StyledLink>
               ))}
             <StyledLink islight={islight}>
-              <LoginLink key="loginLink" />
+              <a onClick={onJoin}>Join</a>
             </StyledLink>
           </Toolbar>
         </Box>

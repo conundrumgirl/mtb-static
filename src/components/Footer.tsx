@@ -1,30 +1,92 @@
-import { ReactComponent as MTB_Logo } from '@assets/mtb_logo_static_blue.svg'
-import { ReactComponent as Northwestern_Logo } from '@assets/northwestern_logo.svg'
-import { ReactComponent as PenState_Logo } from '@assets/pen_state_logo.svg'
-import { ReactComponent as SageBio_Logo } from '@assets/sage_bio_logo.svg'
-import { Box } from '@mui/material'
+import {ReactComponent as MTB_Logo} from '@assets/mtb_logo_white.svg'
+import {Box, Divider, Hidden, styled, Typography} from '@mui/material'
+import theme, {colors} from '@style/theme'
 
-const Footer: React.FunctionComponent = () => {
+const LinkGroup = styled(Box)(({theme}) => ({
+  fontWeight: '400',
+  fontSize: '14px',
+  lineHeight: '16px',
+  marginLeft: theme.spacing(12),
+  [theme.breakpoints.down('md')]: {
+    marginLeft: 0,
+  },
+  '& a': {
+    color: '#fff',
+    display: 'block',
+    margin: theme.spacing(2, 0),
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
+  '& strong': {
+    display: 'block',
+    color: '#fff',
+    marginBottom: theme.spacing(2),
+  },
+}))
+
+const Footer: React.FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
   return (
     <Box
-      p={6}
-      display="flex"
-      bgcolor={'#fff'}
-      justifyContent="space-between"
-      alignItems="center">
-      <MTB_Logo title="MTB" />
-      <Box
-        display="flex"
-        sx={{
-          alignItems: 'center',
-          '& >svg': {
-            marginLeft: '60px',
-          },
-        }}>
-        <Northwestern_Logo title="Northwestern University" />
-        <SageBio_Logo title="Sage Bionetworks" />
-        <PenState_Logo title="PennState" />
-      </Box>
+      sx={{
+        padding: theme.spacing(6),
+        color: '#fff',
+
+        backgroundColor: colors.primaryPurple,
+      }}>
+      <Hidden mdDown>
+        <Box
+          sx={{
+            display: 'flex',
+            paddingBottom: theme.spacing(3),
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}>
+          <MTB_Logo title="MTB" />
+          <Box
+            display="flex"
+            sx={{
+              alignItems: 'flex-start',
+            }}>
+            <LinkGroup>
+              <strong>Get Started</strong>
+
+              <a href="#" onClick={onJoin}>
+                Join
+              </a>
+            </LinkGroup>
+            <LinkGroup>
+              <strong>About</strong>
+
+              <a href="/about-us">About Us</a>
+              <a href="/assessments">Assessments</a>
+            </LinkGroup>
+            <LinkGroup>
+              <strong>Legal</strong>
+
+              <a href="">Terms</a>
+              <a href="">Privacy</a>
+            </LinkGroup>
+          </Box>
+        </Box>
+        <Divider color="#F8F9FA"></Divider>
+        <Typography variant="body1" component="p" mt={2}>
+          &#169; 2022
+        </Typography>
+      </Hidden>
+      <Hidden mdUp>
+        <LinkGroup textAlign={'center'}>
+          <a href="#" onClick={onJoin}>
+            Join
+          </a>
+          <a href="/about-us">About Us</a>
+          <a href="/assessments">Assessments</a>
+          <a href="">Terms</a>
+          <a href="">Privacy</a>
+        </LinkGroup>
+      </Hidden>
     </Box>
   )
 }

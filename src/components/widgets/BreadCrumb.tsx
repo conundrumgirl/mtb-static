@@ -1,53 +1,51 @@
-import { ReactComponent as BackIcon } from '@assets/arrow_l.svg'
-import { Breadcrumbs, styled, Typography } from '@mui/material'
-import theme, { colors } from '@style/theme'
+import {ReactComponent as BackIcon} from '@assets/arrow_l.svg'
+import {Breadcrumbs, styled, Typography} from '@mui/material'
+import theme from '@style/theme'
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-
+import {NavLink} from 'react-router-dom'
 
 export interface BreadCrumbProps {
-  links: { url: string; text: string }[]
+  links: {url: string; text: string}[]
   currentItem?: string
 }
 
-const StyledLink = styled(NavLink)(({ theme }) => ({
+const StyledLink = styled(NavLink)(({theme}) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
 }))
 
-
 const BreadCrumb: React.FunctionComponent<BreadCrumbProps> = ({
   links,
   currentItem = '',
 }: BreadCrumbProps) => {
-
   return (
     <Breadcrumbs aria-label="breadcrumb" separator={currentItem ? '/' : ''}>
       {links.map((link, index) => (
-        <StyledLink to={link.url} key={link.url} >
-          {index === 0 && <BackIcon style={{ width: '18px' }} />}
+        <StyledLink to={link.url} key={link.url}>
+          {index === 0 && <BackIcon style={{width: '18px'}} />}
           <Typography
-
             sx={{
-              fontFamily: 'poppins',
-              fontSize: '12px',
+              fontStyle: 'normal',
+              fontWeight: '900',
+              fontSize: '16px',
               lineHeight: '20px',
-              marginLeft: index > 0 ? theme.spacing(1.25) : 0
-            }}
-
-          >
+              color: '#4F527D',
+              marginLeft: index > 0 ? theme.spacing(1.25) : theme.spacing(1),
+            }}>
             {link.text}
           </Typography>
         </StyledLink>
       ))}
 
-      <Typography sx={{
-        fontFamily: 'poppins',
-        fontSize: '12px',
-        lineHeight: '20px',
-        color: colors.primaryDarkBlue
-      }}>
+      <Typography
+        sx={{
+          fontStyle: 'normal',
+          fontWeight: '900',
+          fontSize: '16px',
+          lineHeight: '20px',
+          color: '#4F527D',
+        }}>
         {currentItem}
       </Typography>
     </Breadcrumbs>

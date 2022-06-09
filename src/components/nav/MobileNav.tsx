@@ -1,5 +1,5 @@
 //import MobileDrawerMenuHeader from '@components/widgets/MobileDrawerMenuHeader'
-import {ReactComponent as Logo} from '@assets/mtb_logo_static.svg'
+import {ReactComponent as Logo} from '@assets/mtb_logo_white.svg'
 import ClearIcon from '@mui/icons-material/Clear'
 import Menu from '@mui/icons-material/Menu'
 import {Box, Drawer, IconButton, Link} from '@mui/material'
@@ -7,7 +7,6 @@ import {styled} from '@mui/material/styles'
 import {colors, latoFont} from '@style/theme'
 import React, {FunctionComponent} from 'react'
 import {NavLink} from 'react-router-dom'
-import LoginLink from './LoginLink'
 
 const drawerWidth = '200px'
 
@@ -41,7 +40,7 @@ const StyledLink = styled('span')(({theme}) => ({
     },
     '&:hover': {
       backgroundColor: '#fff',
-      color: colors.primaryBlue,
+      color: colors.gray800,
     },
   },
 }))
@@ -52,16 +51,17 @@ const DrawerBox = styled(Drawer)(({theme}) => ({
 
   '& .MuiPaper-root': {
     width: drawerWidth,
-    backgroundColor: colors.primaryDarkBlue, //'#F8F8F8',
+    backgroundColor: colors.primaryPurple, //'#F8F8F8',
   },
 }))
 
 type Routes = {name: string; path: string}[]
 
-const MobileNav: FunctionComponent<{routes: Routes; islight?: boolean}> = ({
-  routes,
-  islight,
-}) => {
+const MobileNav: FunctionComponent<{
+  routes: Routes
+  islight?: boolean
+  onJoin: () => void
+}> = ({routes, islight, onJoin}) => {
   const [isMobileOpen, setIsMobileOpen] = React.useState(false)
 
   return (
@@ -100,13 +100,21 @@ const MobileNav: FunctionComponent<{routes: Routes; islight?: boolean}> = ({
             justifyContent="space-between"
             alignItems="flex-start">
             <Link
-              sx={{ml: 3, width: '120px'}}
+              sx={{ml: 3, mb: 5, width: '150px'}}
               target="_blank"
               href="https://www.mobiletoolbox.org"
               className={'' /*classes.mobileToolBarLink*/}>
               <Logo />
             </Link>
-            <ClearIcon onClick={() => setIsMobileOpen(false)} />
+            <ClearIcon
+              style={{
+                color: '#fff',
+                position: 'absolute',
+                right: '3px',
+                top: '10px',
+              }}
+              onClick={() => setIsMobileOpen(false)}
+            />
           </Box>
 
           {routes
@@ -124,7 +132,9 @@ const MobileNav: FunctionComponent<{routes: Routes; islight?: boolean}> = ({
               </StyledLink>
             ))}
           <StyledLink>
-            <LoginLink key="loginLink" />
+            <a onClick={onJoin}>
+              <strong>Join</strong>
+            </a>
           </StyledLink>
         </DrawerBox>
       </Box>

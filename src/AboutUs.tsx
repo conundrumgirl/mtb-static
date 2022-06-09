@@ -5,31 +5,24 @@ import ucsandiego_logo from '@assets/about/ucsandiego.svg'
 import ucsf_logo from '@assets/about/ucsf.svg'
 import udelaware_logo from '@assets/about/udelaware.svg'
 import washu_logo from '@assets/about/washu.svg'
+import MSliwinski from '@assets/m_sliwinski.jpg'
+import RGershon from '@assets/r_gershon.jpg'
 import sagebio_logo from '@assets/sage_bio_logo.svg'
 import PageShell from '@components/widgets/PageShell'
-import ClearIcon from '@mui/icons-material/Clear'
+import {Section} from '@components/widgets/Styled'
 import {
-  Button,
-  Container,
-  Dialog,
-  DialogContent,
   DialogTitle,
   DialogTitleProps,
-  Hidden,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemText,
+  Grid,
   MenuItem,
   TextField,
+  Typography,
 } from '@mui/material'
-import {buttonClasses} from '@mui/material/Button'
+import Avatar from '@mui/material/Avatar'
 import {alpha, styled} from '@mui/material/styles' //vs mui/styles
-import Tooltip, {tooltipClasses, TooltipProps} from '@mui/material/Tooltip'
 import {Box} from '@mui/system'
-import {latoFont} from '@style/theme'
+import {colors, latoFont} from '@style/theme'
 import React, {FunctionComponent} from 'react'
-import data from './about_data'
 
 const orgImages: Map<string, string> = new Map([
   [northwestern_logo, 'Northwestern University'],
@@ -101,6 +94,12 @@ const LogoContainer = styled('div')<{rowIndex: number}>(
     },
   })
 )
+const StyledAvatar = styled(Avatar)(({theme}) => ({
+  width: '156px',
+  height: '156px',
+  border: '1px solid #ccc',
+  margin: '0 auto',
+}))
 
 const StyledSelect = styled(TextField)(({theme}) => ({
   margin: '0 auto',
@@ -170,58 +169,6 @@ const Contributors = styled('div')(({theme}) => ({
   overflow: 'scroll',
 }))
 
-const Photos = styled('div')(({theme}) => ({
-  padding: theme.spacing(10, 0, 0, 10),
-
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'flex-start',
-
-  backgroundColor: '#fff',
-  width: '100%',
-  color: '#000',
-  [theme.breakpoints.down('md')]: {
-    padding: theme.spacing(5, 0, 0, 5),
-  },
-  '& .MuiButton-textPrimary': {
-    fontWeight: '900',
-    color: '#fff',
-  },
-}))
-
-const PhotoContainer = styled('div')(({theme}) => ({
-  textAlign: 'center',
-  width: '122px',
-  marginBottom: theme.spacing(10),
-  marginRight: theme.spacing(19),
-  cursor: 'pointer',
-  '& figure': {
-    margin: 0,
-  },
-  '& img': {
-    width: '70px',
-    height: '70px',
-  },
-  '& figcaption': {
-    marginTop: theme.spacing(2),
-    color: 'black',
-    display: 'block',
-    fontSize: '14px',
-
-    fontFamily: latoFont,
-    fontWeight: 900,
-    '> span': {
-      display: 'block',
-      fontStyle: 'italic',
-      fontWeight: '400',
-    },
-  },
-  [theme.breakpoints.down('md')]: {
-    marginRight: theme.spacing(5),
-    marginBottom: theme.spacing(5),
-  },
-}))
-
 const StyledTitle = styled(({className, ...props}: DialogTitleProps) => (
   <DialogTitle {...props} classes={{root: className}} />
 ))(({theme}) => ({
@@ -254,210 +201,109 @@ const StyledTitle = styled(({className, ...props}: DialogTitleProps) => (
   },
 }))
 
-const StyledTooltip = styled(({className, ...props}: TooltipProps) => (
-  <Tooltip
-    {...props}
-    classes={{popper: className}}
-    PopperProps={{
-      popperOptions: {
-        strategy: 'fixed',
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [0, -5],
-            },
-          },
-        ],
-      },
-    }}
-  />
-))(({theme}) => ({
-  [`& .${tooltipClasses.tooltipPlacementBottom}`]: {
-    margin: '0 100px',
-  },
-  [`& .${tooltipClasses.tooltip}`]: {
-    maxWidth: 220,
-    fontStyle: 'italic',
-
-    fontWeight: 400,
-    fontSize: '14px',
-    backgroundColor: '#63676C',
-
-    [`& .${buttonClasses.textPrimary}`]: {
-      display: 'block',
-      color: '#fff',
-      fontWeight: 900,
-      paddingLeft: 0,
-      textTransform: 'none',
-      '&:hover': {
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-}))
-
-const OrgInfo = styled('div')(({theme}) => ({
-  padding: theme.spacing(10, 12, 13, 12),
-}))
-
-type Contributor = {
-  name: string
-
-  orgName?: string
-  title?: string
-  bio?: React.ReactNode
-  photo: string
-}
-
-type Data = {
-  orgName: string
-  orgDescription: string
-  orgLogo?: string
-  people: Contributor[]
-}
-
-const AboutUs: FunctionComponent<{}> = () => {
-  const [currentOrgIndex, setCurrentOrgIndex] = React.useState(0)
-  const [currentContributor, setCurrentContributor] = React.useState<
-    Contributor | undefined
-  >(undefined)
-  const handleListItemClick = (index: number) => {
-    setCurrentOrgIndex(index)
-  }
+const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
   return (
-    <PageShell islight={true}>
-      <Container maxWidth="lg">
-        <BodyText1>
+    <PageShell islight={true} onJoin={onJoin}>
+      <Section>
+        <Typography variant="h2" textAlign="left" mb={6}>
+          About Us
+        </Typography>
+        <Typography variant="body1" maxWidth="700px" mb={6}>
           Mobile Toolbox comprises a team of clinical colleagues, cognition
           researchers, measurement scientists and technical experts with proven
           success in multiple large-scale validation and development projects.
-        </BodyText1>
-        <StyledH1>Pur Partners</StyledH1>
-        <LogoContainer rowIndex={1}>
-          {Array.from(orgImages.keys())
-            .slice(0, 3)
-            .map((src, index) => (
-              <img src={src} alt={orgImages.get(src)} key={src} />
-            ))}
-        </LogoContainer>
-        <LogoContainer rowIndex={2}>
-          {Array.from(orgImages.keys())
-            .slice(3, 8)
-            .map((src, index) => (
-              <img src={src} alt={orgImages.get(src)} key={src} />
-            ))}
-        </LogoContainer>
-
-        <StyledH1>Select a Partner to View Our Contributors</StyledH1>
-        <Hidden mdUp>
-          <Box textAlign="center">
-            <StyledSelect
-              id="select org"
-              select
-              value={currentOrgIndex}
-              onChange={(e: any) =>
-                handleListItemClick(parseInt(e.target.value))
-              }
-              helperText="Please select">
-              {data.map((item, index) => (
-                <StyledMenuItem key={item?.orgName} value={index}>
-                  {item?.orgName}
-                </StyledMenuItem>
+        </Typography>
+      </Section>
+      <Box bgcolor={colors.purpleTransparency2}>
+        <Section mb={13}>
+          <Typography variant="h3" textAlign="center" mb={10}>
+            Our Partners
+          </Typography>
+          <LogoContainer rowIndex={1}>
+            {Array.from(orgImages.keys())
+              .slice(0, 3)
+              .map((src, index) => (
+                <img src={src} alt={orgImages.get(src)} key={src} />
               ))}
-            </StyledSelect>
-          </Box>
-        </Hidden>
-        <ContributorContainer id="contributorContainer">
-          <Hidden mdDown>
-            <OrgList id="left">
-              <List component="nav" aria-label="Our Partners">
-                {data.map((item, index) => (
-                  <ListItemButton
-                    key={item.orgName}
-                    selected={currentOrgIndex === index}
-                    onClick={event => handleListItemClick(index)}>
-                    {' '}
-                    <ListItemText primary={item.orgName} />
-                  </ListItemButton>
-                ))}
-              </List>
-            </OrgList>
-          </Hidden>
-
-          <Contributors id="right">
-            <Photos>
-              {data[currentOrgIndex].people.map((person, index) => (
-                <PhotoContainer
-                  key={person.name + index}
-                  onClick={() => setCurrentContributor(person)}>
-                  <StyledTooltip
-                    arrow
-                    placement="bottom"
-                    title={
-                      <div>
-                        {person.title}
-                        {person.bio && (
-                          <Button
-                            variant="text"
-                            onClick={() => setCurrentContributor(person)}>
-                            View bio &gt;
-                          </Button>
-                        )}
-                      </div>
-                    }>
-                    <figure>
-                      {person.photo.length > 5 ? (
-                        <img
-                          src={person.photo}
-                          title={person.name}
-                          alt={person.name}
-                        />
-                      ) : (
-                        <div
-                          style={{
-                            width: '70px',
-                            height: '70px',
-                            border: '1px solid black',
-                            margin: '0 auto',
-                            borderRadius: '50%',
-                          }}></div>
-                      )}
-                      <figcaption>
-                        {person.name}
-                        {person.orgName && <span> {person.orgName}</span>}
-                      </figcaption>
-                    </figure>
-                  </StyledTooltip>
-                </PhotoContainer>
+          </LogoContainer>
+          <LogoContainer rowIndex={2}>
+            {Array.from(orgImages.keys())
+              .slice(3, 8)
+              .map((src, index) => (
+                <img src={src} alt={orgImages.get(src)} key={src} />
               ))}
-            </Photos>
-            <OrgInfo>
-              <StyledH2>{data[currentOrgIndex].orgName}</StyledH2>
-              <BodyText1>{data[currentOrgIndex].orgDescription}</BodyText1>
-            </OrgInfo>
-          </Contributors>
-        </ContributorContainer>
-      </Container>
-      <Dialog
-        open={currentContributor !== undefined}
-        onClose={() => setCurrentContributor(undefined)}>
-        <StyledTitle>
-          <IconButton
-            onClick={() => setCurrentContributor(undefined)}
-            title="close">
-            <ClearIcon />
-          </IconButton>
-          <div>
-            <strong>{currentContributor?.name}</strong>
-            <br />
-            <i>{currentContributor?.title}</i>
-          </div>
-        </StyledTitle>
-        <DialogContent sx={{color: 'black'}}>
-          {currentContributor?.bio}
-        </DialogContent>
-      </Dialog>
+          </LogoContainer>
+        </Section>
+      </Box>
+
+      <Section>
+        <Typography variant="h3" textAlign="center" mb={12}>
+          Our Leadership Team
+        </Typography>
+        <Grid
+          container
+          rowSpacing={{xs: 8, lg: 25}}
+          mb={8}
+          columnSpacing={{xs: 4, lg: 10}}>
+          <Grid item xs={12} lg={3} textAlign="center">
+            <StyledAvatar src={RGershon} alt="Richard Gershon" />
+          </Grid>
+          <Grid item xs={12} lg={9}>
+            <Typography component="p" variant="body1" maxWidth="700px">
+              Richard Gershon, PhD, of Northwestern University, is widely
+              recognized for his expertise in advancing the use of technology
+              for increasing the impact and reach of psychometrically robust
+              health measurements. Dr. Gershon is the contact principal
+              investigator for The Mobile Toolbox for Monitoring Cognitive
+              Function, MyCog: Rapid detection of cognitive impairment in
+              everyday clinical settings, and ARMADA: Advancing Reliable
+              Measurement in Alzheimer’s Disease and cognitive Aging.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} lg={3} textAlign="center">
+            <StyledAvatar src={MSliwinski} alt="Martin Sliwinski" />
+          </Grid>
+          <Grid item xs={12} lg={9}>
+            <Typography component="p" variant="body1" maxWidth="700px">
+              Martin Sliwinski, PhD, of Penn State University, is currently
+              leading Mobile Monitoring of Cognitive Change (M2C2), working to
+              using smartphones to measure cognitive function and subtle
+              variations in cognitive performance in the context of everyday
+              life. Dr. Sliwinski aims to develop infrastructure that provides
+              the research community with open, flexible, and usable tools to
+              enable scientific progress that depends on the sensitive and
+              accurate measurement of cognitive change.
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} lg={3} textAlign="center">
+            <StyledAvatar src={RGershon} alt="Richard Gershon" />
+          </Grid>
+          <Grid item xs={12} lg={9}>
+            <Typography component="p" variant="body1" maxWidth="700px">
+              Michael Kellen leads the technology platforms and services team at
+              Sage Bionetworks. Since 2009, the team has supported open projects
+              and challenges in the collaborative analysis of human health data
+              through the development of the Synapse platform, and by providing
+              support with data hosting, curation, and analysis. The team also
+              supports the collection of human phenotypic data though the
+              development of the Bridge platform. Michael has over 10 years
+              experience developing software for academic and corporate users in
+              the life sciences, and has brought several award-winning products
+              to market in this space covering simulation, data capture and
+              analysis workflow, data integration, and team collaboration. Prior
+              to Sage, Michael held a variety of positions with Teranode
+              corporation since joining as the company’s first employee in 2002,
+              covering product development, field consulting, product
+              management, and development management. Michael completed a
+              doctorate in bioengineering at the University of Washington in
+              2002 with a focus in computational biology where he also helped
+              develop scientific modeling and simulation technology subsequently
+              licensed by Teranode.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Section>
     </PageShell>
   )
 }

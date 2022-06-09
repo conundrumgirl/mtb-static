@@ -5,19 +5,19 @@ import {
   Hidden,
   Tab,
   Tabs,
-  Typography
+  Typography,
 } from '@mui/material'
-import { styled } from '@mui/material/styles'
-import theme, { colors } from '@style/theme'
-import React, { FunctionComponent } from 'react'
+import {styled} from '@mui/material/styles'
+import theme, {colors} from '@style/theme'
+import React, {FunctionComponent} from 'react'
 import SwipeableViews from 'react-swipeable-views'
-import { autoPlay } from 'react-swipeable-views-utils'
+import {autoPlay} from 'react-swipeable-views-utils'
 import Carousel from '../widgets/Carousel'
-import { mobileTabInfo, TabInfo, webTabInfo } from './ExperiencesTextInfo'
+import {mobileTabInfo, TabInfo, webTabInfo} from './ExperiencesTextInfo'
 
 const ExperienceTabItem = styled(Box, {
   shouldForwardProp: prop => prop !== 'isActive',
-})<{ isActive?: boolean }>(({ theme, isActive }) => ({
+})<{isActive?: boolean}>(({theme, isActive}) => ({
   opacity: isActive ? 1 : 0.3,
   marginBottom: theme.spacing(20),
   '&:hover': {
@@ -29,7 +29,7 @@ const ExperienceTabItem = styled(Box, {
   },
 }))
 
-const ExperienceContainer = styled(Box)(({ theme }) => ({
+const ExperienceContainer = styled(Box)(({theme}) => ({
   backgroundPositionY: 'bottom',
   backgroundPositionX: 'right',
   backgroundRepeat: 'no-repeat',
@@ -42,30 +42,30 @@ const ExperienceContainer = styled(Box)(({ theme }) => ({
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
-const ExperienceTabContainer = styled(Box)(({ theme }) => ({
+const ExperienceTabContainer = styled(Box)(({theme}) => ({
   minWidth: theme.spacing(70),
   maxWidth: theme.spacing(80),
   flexGrow: 0,
   // flexShrink: 0,
 }))
 
-const HomeTabs = styled(Tabs)(({ theme }) => ({
-  boxShadow: `inset 0px ${theme.spacing(-1)} 0px ${colors.neutralsGray}`,
+const HomeTabs = styled(Tabs)(({theme}) => ({
+  boxShadow: `inset 0px ${theme.spacing(-1)} 0px ${colors.gray800}`,
   marginBottom: theme.spacing(30),
   '& .MuiTab-root': {
     fontWeight: '700',
     fontSize: '24px',
     lineHeight: '29px',
-    color: colors.neutralsGray,
+    color: colors.gray800,
     paddingLeft: 0,
     paddingRight: theme.spacing(10),
     textTransform: 'none',
     '&.Mui-selected': {
-      color: colors.accent,
+      color: colors.secondaryRed,
     },
   },
   '& .MuiTabs-indicator': {
-    backgroundColor: colors.accent,
+    backgroundColor: colors.accentBlue,
     height: theme.spacing(1),
   },
 }))
@@ -84,7 +84,7 @@ function a11yProps(index: number) {
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props
+  const {children, value, index, ...other} = props
 
   return (
     <div
@@ -94,7 +94,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}>
       {value === index && (
-        <Box sx={{ p: 0 }}>
+        <Box sx={{p: 0}}>
           <Typography component="div">{children}</Typography>
         </Box>
       )}
@@ -108,7 +108,7 @@ const ExperienceColumn: FunctionComponent<{
   tabInfo: TabInfo[]
   currentItemIndex: number
   onChangeItem: (n: number) => void
-}> = ({ startIndex, endIndex, onChangeItem, currentItemIndex, tabInfo }) => {
+}> = ({startIndex, endIndex, onChangeItem, currentItemIndex, tabInfo}) => {
   console.log(currentItemIndex)
   return (
     <ExperienceTabContainer>
@@ -129,18 +129,20 @@ const ExperienceColumn: FunctionComponent<{
 
 const Experiences: FunctionComponent<{}> = () => {
   const [value, setValue] = React.useState(0)
-  const [step, setStep] = React.useState({ web: 0, mobile: 0 })
+  const [step, setStep] = React.useState({web: 0, mobile: 0})
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
   return (
     <ExperienceContainer>
-      <Typography variant="h2" mb={10}>Experience Mobiel Toolbox</Typography>
+      <Typography variant="h2" mb={10}>
+        Experience Mobiel Toolbox
+      </Typography>
       <Grid
         container
         rowSpacing={5}
-        columnSpacing={{ xs: 4, lg: 5 }}
+        columnSpacing={{xs: 4, lg: 5}}
         sx={
           {
             /*   backgroundImage: {lg: 'url(' + bgLeft + ')'},
@@ -153,12 +155,18 @@ const Experiences: FunctionComponent<{}> = () => {
         }>
         <Grid item xs={12} lg={6}>
           <Box>
-            <Typography variant="h3" color={theme.palette.text.secondary} mb={10}>
+            <Typography
+              variant="h3"
+              color={theme.palette.text.secondary}
+              mb={10}>
               Mobile toolbox has a web experience for researchers and a mobile
               app experience for study participants. You don't have to have a
               software engineering team to create your own custom app.
             </Typography>
-            <Typography variant="h3" color={theme.palette.text.secondary} mb={10}>
+            <Typography
+              variant="h3"
+              color={theme.palette.text.secondary}
+              mb={10}>
               Sign up is easy! Simply register for a Sage Bionetworks account to
               begin exploring today.
             </Typography>
@@ -166,7 +174,10 @@ const Experiences: FunctionComponent<{}> = () => {
         </Grid>
         <Grid item xs={12} lg={6}>
           <Box>
-            <Typography variant="h3" color={theme.palette.text.secondary} mb={10}>
+            <Typography
+              variant="h3"
+              color={theme.palette.text.secondary}
+              mb={10}>
               Try out the assessments yourself with our demo app or start
               designing your own custom study through our Researcher web. You
               can customize your study schedule, assessments, and the look and
@@ -176,7 +187,7 @@ const Experiences: FunctionComponent<{}> = () => {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
             <HomeTabs
               value={value}
               onChange={handleChange}
@@ -195,7 +206,7 @@ const Experiences: FunctionComponent<{}> = () => {
                   tabInfo={mobileTabInfo}
                   currentItemIndex={step.mobile}
                   onChangeItem={itemIndex =>
-                    setStep(prev => ({ ...prev, mobile: itemIndex }))
+                    setStep(prev => ({...prev, mobile: itemIndex}))
                   }
                 />
 
@@ -211,7 +222,7 @@ const Experiences: FunctionComponent<{}> = () => {
                   tabInfo={mobileTabInfo}
                   currentItemIndex={step.mobile}
                   onChangeItem={itemIndex =>
-                    setStep(prev => ({ ...prev, mobile: itemIndex }))
+                    setStep(prev => ({...prev, mobile: itemIndex}))
                   }
                 />
               </Box>
@@ -223,7 +234,7 @@ const Experiences: FunctionComponent<{}> = () => {
                   variant="text"
                   position="top"
                   onChangeStep={itemIndex =>
-                    setStep(prev => ({ ...prev, mobile: itemIndex }))
+                    setStep(prev => ({...prev, mobile: itemIndex}))
                   }
                   elements={mobileTabInfo.map((element, index) => (
                     <Box textAlign="center" mx="auto">
@@ -240,14 +251,14 @@ const Experiences: FunctionComponent<{}> = () => {
             </Hidden>
           </TabPanel>
           <TabPanel value={value} index={1} key="desktopTab">
-            <Grid container columnSpacing={{ xs: 2, md: 4 }}>
+            <Grid container columnSpacing={{xs: 2, md: 4}}>
               {webTabInfo.map((item, index) => (
                 <Grid
                   item
                   key={`${index}`}
                   xs={4}
                   lg={3}
-                  onClick={() => setStep(prev => ({ ...prev, web: index }))}>
+                  onClick={() => setStep(prev => ({...prev, web: index}))}>
                   <ExperienceTabItem isActive={index === step.web}>
                     <Typography variant="h4">{item.title}</Typography>
                     {item.body}

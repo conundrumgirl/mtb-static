@@ -34,7 +34,7 @@ const Partners: FunctionComponent<{}> = () => {
           <PenState_Logo />
         </Grid>
         <Grid item xs={12} textAlign="center">
-          <Button color="primary" variant="contained" href="">
+          <Button color="primary" variant="contained" href="/about-us">
             View Our Contributors
           </Button>
         </Grid>

@@ -118,7 +118,7 @@ export const HowItWorksDesktop: FunctionComponent = () => {
               <Item
                 sx={{
                   textAlign: {xs: 'center', md: 'right'},
-                  marginTop: index === 0 ? 0 : 11.5,
+                  marginTop: 11.5,
                 }}>
                 {item.image}
               </Item>
@@ -148,7 +148,7 @@ export const HowItWorksMobile: FunctionComponent = () => {
         <MoreArrow />
       </LearnMoreLink>{' '}
   */}
-      <Box key={index} marginTop={index === 0 ? 0 : 19.5}>
+      <Box key={index} marginTop={8}>
         {item.image}
       </Box>
     </Box>

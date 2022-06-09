@@ -85,7 +85,9 @@ const Carousel: FunctionComponent<CarouselProps> = ({
         activeStep={activeStep}
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            <StepperArrow style={{transform: 'rotate(180deg)'}} />
+            {activeStep !== 0 && (
+              <StepperArrow style={{transform: 'rotate(180deg)'}} />
+            )}
           </Button>
         }
         nextButton={
@@ -93,7 +95,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({
             size="small"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}>
-            <StepperArrow />
+            {activeStep < maxSteps - 1 && <StepperArrow />}
           </Button>
         }
       />

@@ -5,7 +5,9 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  Divider,
   IconButton,
+  Link,
   Typography,
 } from '@mui/material'
 import Box from '@mui/material/Box'
@@ -50,15 +52,37 @@ export default function App() {
             </Box>
 
             <Footer onJoin={() => setOpenJoin(true)} />
-            <Dialog open={openJoin} onClose={() => setOpenJoin(false)}>
+            <Dialog
+              open={openJoin}
+              onClose={() => setOpenJoin(false)}
+              fullWidth={true}
+              maxWidth="sm">
               <DialogTitle>
-                <IconButton onClick={() => setOpenJoin(false)} title="close">
+                <IconButton
+                  onClick={() => setOpenJoin(false)}
+                  title="close"
+                  sx={{position: 'absolute', right: '10px', top: '11px'}}>
                   <ClearIcon />
                 </IconButton>
-                <div>title goes here</div>
+                <div>Join Mobile Toolbox</div>
+                <Divider sx={{mt: 3}} />
               </DialogTitle>
+
               <DialogContent sx={{color: 'black'}}>
-                content goes here
+                <Typography component={'p'} mt={2} lineHeight="20px">
+                  Current access to Mobile Toolbox Beta requires administrator
+                  approval.
+                </Typography>
+                <Typography component={'p'} mt={2} lineHeight="20px">
+                  If you are interested in obtaining the early-preview Beta
+                  account, please email{' '}
+                  <Link
+                    href="mtb_signup@sagebase.com"
+                    sx={{fontSize: '16px', lineHeight: '20px'}}>
+                    <strong>mtb_signup@sagebase.com</strong>
+                  </Link>{' '}
+                  to request the account.
+                </Typography>{' '}
               </DialogContent>
             </Dialog>
           </Box>

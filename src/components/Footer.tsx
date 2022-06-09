@@ -7,6 +7,9 @@ const LinkGroup = styled(Box)(({theme}) => ({
   fontSize: '14px',
   lineHeight: '16px',
   marginLeft: theme.spacing(12),
+  [theme.breakpoints.down('md')]: {
+    marginLeft: 0,
+  },
   '& a': {
     color: '#fff',
     display: 'block',
@@ -57,8 +60,8 @@ const Footer: React.FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
             <LinkGroup>
               <strong>About</strong>
 
-              <a href="">About Us</a>
-              <a href="">Assessments</a>
+              <a href="/about-us">About Us</a>
+              <a href="/assessments">Assessments</a>
             </LinkGroup>
             <LinkGroup>
               <strong>Legal</strong>
@@ -74,12 +77,12 @@ const Footer: React.FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
         </Typography>
       </Hidden>
       <Hidden mdUp>
-        <LinkGroup textAlign={'center'} marginLeft={0}>
+        <LinkGroup textAlign={'center'}>
           <a href="#" onClick={onJoin}>
             Join
           </a>
-          <a href="">About Us</a>
-          <a href="">Assessments</a>
+          <a href="/about-us">About Us</a>
+          <a href="/assessments">Assessments</a>
           <a href="">Terms</a>
           <a href="">Privacy</a>
         </LinkGroup>

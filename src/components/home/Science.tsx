@@ -73,7 +73,7 @@ const Science: FunctionComponent<{}> = () => {
             standard.
           </Typography>
           <Box mb={10}>
-            <Button variant="contained" color="primary" href="">
+            <Button variant="contained" color="primary" href="/assessments">
               View Our Assessments
             </Button>
           </Box>
@@ -88,9 +88,9 @@ const Science: FunctionComponent<{}> = () => {
             Remote assessments created by domain experts.
           </Typography>
           <Box mb={10}>
-            <Button variant="contained" color="primary" href="">
+            <Button variant="contained" color="primary" href="/about-us">
               {' '}
-              View Our Assessments
+              View Our Team
             </Button>
           </Box>
         </Grid>

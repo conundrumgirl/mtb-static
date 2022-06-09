@@ -6,13 +6,11 @@ import PageShell from '@components/widgets/PageShell'
 import {useAsync} from '@helpers/AsyncHook'
 import {
   Box,
-  Button,
   Container,
   Divider,
   Grid,
   Hidden,
   styled,
-  ThemeProvider,
   Typography,
 } from '@mui/material'
 import AssessmentService from '@services/assessment.service'
@@ -148,7 +146,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
                     resources={data.resources}
                     variant="detail"></AssessmentImage>
 
-                  <ThemeProvider theme={theme}>
+                  {/*  <ThemeProvider theme={theme}>
                     <Box mt={5}>
                       <Typography component="p" paragraph>
                         {' '}
@@ -159,7 +157,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
                         Go to Login
                       </Button>
                     </Box>
-                  </ThemeProvider>
+                  </ThemeProvider>*/}
                 </Box>
               </Grid>
               <Grid item xs={12} lg={6}>

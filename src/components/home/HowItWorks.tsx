@@ -91,7 +91,7 @@ export const HowItWorksDesktop: FunctionComponent = () => {
   return (
     <>
       <Typography variant="h2" mb={12}>
-        How it works
+        How It Works
       </Typography>
       <Grid
         container
@@ -136,7 +136,7 @@ export const HowItWorksMobile: FunctionComponent = () => {
   const innerElements = info.map((item, index) => (
     <Box textAlign="left">
       <Typography variant="h2" mb={10}>
-        How it works
+        How It Works
       </Typography>
       <Typography variant="largeBodyCopy" mb={4} component={'p'}>
         {item.intro}

@@ -1,13 +1,14 @@
 import massgeneral_logo from '@assets/about/massgeneral.svg'
+import MKellen from '@assets/about/mkellen.png'
+import MSliwinski from '@assets/about/m_sliwinski.jpg'
 import nih_logo from '@assets/about/nih.svg'
 import northwestern_logo from '@assets/about/northwesternu.svg'
 import penstate_logo from '@assets/about/penstate.svg'
+import RGershon from '@assets/about/r_gershon.jpg'
 import ucsandiego_logo from '@assets/about/ucsandiego.svg'
 import ucsf_logo from '@assets/about/ucsf.svg'
 import udelaware_logo from '@assets/about/udelaware.svg'
 import washu_logo from '@assets/about/washu.svg'
-import MSliwinski from '@assets/m_sliwinski.jpg'
-import RGershon from '@assets/r_gershon.jpg'
 import sagebio_logo from '@assets/sage_bio_logo.svg'
 import PageShell from '@components/widgets/PageShell'
 import {Section} from '@components/widgets/Styled'
@@ -320,7 +321,7 @@ const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
           </Grid>
 
           <Grid item xs={12} lg={3} textAlign="center">
-            <StyledAvatar src={RGershon} alt="Richard Gershon" />
+            <StyledAvatar src={MKellen} alt="Michael Kellen" />
           </Grid>
           <Grid item xs={12} lg={9}>
             <Typography component="p" variant="body1" maxWidth="700px">

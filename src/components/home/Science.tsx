@@ -3,7 +3,7 @@ import {ReactComponent as Icon2} from '@assets/science2.svg'
 import {ReactComponent as Icon3} from '@assets/science3.svg'
 import {Box, Button, Grid, Typography} from '@mui/material'
 import {styled} from '@mui/material/styles' //vs mui/styles
-import theme from '@style/theme'
+import theme, {colors} from '@style/theme'
 import React, {FunctionComponent} from 'react'
 
 const ScienceContainer = styled(Box)(({theme}) => ({}))
@@ -101,8 +101,15 @@ const Science: FunctionComponent<{}> = () => {
             <Icon3 />
           </IconHolder>
 
-          <Typography component="p" variant="largeBodyCopy" mb={10}>
+          <Typography component="p" variant="largeBodyCopy">
             We transparently publish our methods and data for comparison.
+          </Typography>
+          <Typography
+            component="p"
+            variant="smallItalic"
+            color={colors.secondaryRed}
+            mb={5.5}>
+            Coming soon!
           </Typography>
           <Button variant="contained" color="primary" href="" disabled={true}>
             {' '}

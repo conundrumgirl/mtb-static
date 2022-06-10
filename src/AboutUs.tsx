@@ -1,12 +1,14 @@
 import massgeneral_logo from '@assets/about/massgeneral.svg'
+import MKellen from '@assets/about/mkellen.png'
+import MSliwinski from '@assets/about/m_sliwinski.jpg'
+import nih_logo from '@assets/about/nih.svg'
 import northwestern_logo from '@assets/about/northwesternu.svg'
-import penstate_logo from '@assets/about/pennstate.svg'
+import penstate_logo from '@assets/about/penstate.svg'
+import RGershon from '@assets/about/r_gershon.jpg'
 import ucsandiego_logo from '@assets/about/ucsandiego.svg'
 import ucsf_logo from '@assets/about/ucsf.svg'
 import udelaware_logo from '@assets/about/udelaware.svg'
 import washu_logo from '@assets/about/washu.svg'
-import MSliwinski from '@assets/m_sliwinski.jpg'
-import RGershon from '@assets/r_gershon.jpg'
 import sagebio_logo from '@assets/sage_bio_logo.svg'
 import PageShell from '@components/widgets/PageShell'
 import {Section} from '@components/widgets/Styled'
@@ -29,6 +31,7 @@ const orgImages: Map<string, string> = new Map([
   [sagebio_logo, 'Sage Bionetworks'],
   [penstate_logo, 'Penn State'],
   [massgeneral_logo, 'Massachusets General Hospital'],
+  [nih_logo, 'National Institue of Health'],
   [ucsandiego_logo, 'University of California San Diego'],
   [ucsf_logo, 'University of California San Francisco'],
   [udelaware_logo, 'University of Delaware'],
@@ -97,7 +100,7 @@ const LogoContainer = styled('div')<{rowIndex: number}>(
 const StyledAvatar = styled(Avatar)(({theme}) => ({
   width: '156px',
   height: '156px',
-  border: '1px solid #ccc',
+  border: '4px solid #EDEEF2',
   margin: '0 auto',
 }))
 
@@ -250,14 +253,55 @@ const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
           </Grid>
           <Grid item xs={12} lg={9}>
             <Typography component="p" variant="body1" maxWidth="700px">
-              Richard Gershon, PhD, of Northwestern University, is widely
-              recognized for his expertise in advancing the use of technology
-              for increasing the impact and reach of psychometrically robust
-              health measurements. Dr. Gershon is the contact principal
-              investigator for The Mobile Toolbox for Monitoring Cognitive
-              Function, MyCog: Rapid detection of cognitive impairment in
-              everyday clinical settings, and ARMADA: Advancing Reliable
-              Measurement in Alzheimer’s Disease and cognitive Aging.
+              <p>
+                Dr. Gershon is a Professor and Vice Chair for Research in the
+                Department of Medical Social Sciences, and Professor in the
+                Department of Preventive Medicine-Health and Biomedical
+                Informatics at Northwestern University Feinberg School of
+                Medicine. Dr. Gershon is a leading expert in the development of
+                outcome measurement, with significant experience in both
+                educational and health applications. In response to the
+                realization that the outcomes tools he was using in clinical
+                practice were outdated and failed to cover the needs of
+                patients, Dr. Gershon’s career has focused on the development of
+                modern assessment tools. He strives to find new ways to assess
+                health outcomes and methodologies and provide that information
+                to clinicians in ways that can immediately impact treatment. As
+                PI for the NIH Toolbox for the Assessment of Neurological and
+                Behavioral Function, Dr. Gershon oversaw a team of over 200
+                researchers from around the world to create a large battery of
+                instruments for clinical investigators to assess various areas
+                within cognitive, motor, sensory, and emotional health, for
+                longitudinal, clinical and comparative effectiveness research.
+                He also serves as PI on the NIH Infant and Toddler Toolbox (aka
+                Baby Toolbox) contract to develop a cognitive assessment battery
+                for infants and children aged 1-42 months. Dr. Gershon is the
+                MPI for the NIA sponsored grant Advancing Reliable Measurement
+                in Alzheimer&rsquo;s Disease and cognitive Aging (ARMADA), which
+                validates the NIH Toolbox amongst Alzheimer&rsquo;s populations
+                and older age groups. In recently awarded grants, he is the
+                contact PI for ToolBox Detect: Low-Cost Detection of Cognitive
+                Decline in Primary Care Settings, and co-I for The MyCog Mobile
+                Assessment: Development and Validation of a Telehealth Strategy
+                for Routine Detection of Cognitive Impairment in Primary Care.
+              </p>
+              <p>
+                Dr. Gershon also serves as the MPI for the Environmental
+                influences on Child Health Outcomes (ECHO) PRO Measurement Core.
+                Additionally, in his former role as PI for the NIH Roadmap
+                Patient Reported Outcomes Measurement Information System
+                (PROMIS) Technical Center, Dr. Gershon served as technology host
+                for more than 2,000 researchers and clinicians who are
+                registered users of{' '}
+                <a href="http://www.assessmentcenter.net">
+                  AssessmentCenter.net
+                </a>
+                , a test authoring and study administration portal. Dr.
+                Gershon’s background is further augmented by his numerous
+                publications and presentations, and role as a co-investigator
+                and/or consultant on over 100 assessment development projects in
+                health care, education, and certification.
+              </p>{' '}
             </Typography>
           </Grid>
           <Grid item xs={12} lg={3} textAlign="center">
@@ -277,7 +321,7 @@ const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
           </Grid>
 
           <Grid item xs={12} lg={3} textAlign="center">
-            <StyledAvatar src={RGershon} alt="Richard Gershon" />
+            <StyledAvatar src={MKellen} alt="Michael Kellen" />
           </Grid>
           <Grid item xs={12} lg={9}>
             <Typography component="p" variant="body1" maxWidth="700px">

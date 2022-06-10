@@ -102,7 +102,7 @@ const MobileNav: FunctionComponent<{
             <Link
               sx={{ml: 3, mb: 5, width: '150px'}}
               target="_blank"
-              href="https://www.mobiletoolbox.org"
+              href="/"
               className={'' /*classes.mobileToolBarLink*/}>
               <Logo />
             </Link>

@@ -62,7 +62,7 @@ const Science: FunctionComponent<{}> = () => {
         <Grid item xs={12} lg={4} textAlign="center">
           <IconHolder>
             {' '}
-            <Icon1 />
+            <Icon2 />
           </IconHolder>
           <Typography
             component="p"
@@ -82,7 +82,7 @@ const Science: FunctionComponent<{}> = () => {
         <Grid item xs={12} lg={4} textAlign="center">
           <IconHolder>
             {' '}
-            <Icon2 />
+            <Icon1 />
           </IconHolder>
           <Typography component="p" variant="largeBodyCopy" mb={10}>
             Remote assessments created by domain experts.
@@ -90,7 +90,7 @@ const Science: FunctionComponent<{}> = () => {
           <Box mb={10}>
             <Button variant="contained" color="primary" href="/about-us">
               {' '}
-              View Our Team
+              View Our Contributors
             </Button>
           </Box>
         </Grid>

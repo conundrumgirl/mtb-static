@@ -208,9 +208,8 @@ const staticPagesTheme: Theme = createTheme({
           fontSize: '16px',
           lineHeight: '148%',
           color: '#fff',
-
-          background:
-            'linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #4F527D',
+          boxShadow: 'none',
+          background: '#4F527D',
           borderRadius: '54px',
           '&:hover': {
             backgroundColor: '#383A5A',

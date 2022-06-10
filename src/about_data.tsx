@@ -116,11 +116,12 @@ const data: Data[] = [
             and adults. She played central roles in several large-scale
             initiatives to develop standardized outcome measures including
             Neuro-QoLTM (Quality of Life in Neurological Disorders), the
-            Patient-Reported Outcomes Measurement Information System (PROMIS®)
-            and the app-based NIH Toolbox for Assessment of Neurological and
-            Behavioral Function (NIH Toolbox®). Her current work focuses on
-            cognitive aging, cognitive screening, and development and
-            implementation of smartphone-based and other digital assessments.
+            Patient-Reported Outcomes Measurement Information System (PROMIS
+            <sup>&reg;</sup>) and the app-based NIH Toolbox for Assessment of
+            Neurological and Behavioral Function (NIH Toolbox<sup>&reg;</sup>).
+            Her current work focuses on cognitive aging, cognitive screening,
+            and development and implementation of smartphone-based and other
+            digital assessments.
           </p>
         ),
 

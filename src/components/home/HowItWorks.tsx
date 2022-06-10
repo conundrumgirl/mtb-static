@@ -135,9 +135,6 @@ export const HowItWorksMobile: FunctionComponent = () => {
 
   const innerElements = info.map((item, index) => (
     <Box textAlign="left">
-      <Typography variant="h2" mb={10}>
-        How It Works
-      </Typography>
       <Typography variant="largeBodyCopy" mb={4} component={'p'}>
         {item.intro}
       </Typography>
@@ -159,6 +156,9 @@ export const HowItWorksMobile: FunctionComponent = () => {
   return (
     <Grid container>
       <Grid item xs={12} textAlign="left" alignContent={'center'}>
+        <Typography variant="h2" mb={10}>
+          How It Works
+        </Typography>
         <Carousel
           elements={innerElements}
           activeStep={activeStep}

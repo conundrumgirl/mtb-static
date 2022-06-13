@@ -231,7 +231,7 @@ const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
           </LogoContainer>
           <LogoContainer rowIndex={2}>
             {Array.from(orgImages.keys())
-              .slice(3, 8)
+              .slice(3, 9)
               .map((src, index) => (
                 <img src={src} alt={orgImages.get(src)} key={src} />
               ))}

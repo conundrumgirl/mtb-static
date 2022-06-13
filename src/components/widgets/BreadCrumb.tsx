@@ -31,6 +31,7 @@ const BreadCrumb: React.FunctionComponent<BreadCrumbProps> = ({
               fontSize: '16px',
               lineHeight: '20px',
               color: '#4F527D',
+              textDecoration: 'none',
               marginLeft: index > 0 ? theme.spacing(1.25) : theme.spacing(1),
             }}>
             {link.text}

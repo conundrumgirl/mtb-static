@@ -79,11 +79,12 @@ const AssessmentLibraryWrapper: FunctionComponent<
         assessments={assessments}
         onChangeTags={(tags: string[]) => onChangeTags(tags)}
       /> */}
-        <Typography variant="h2" mt={5} mb={4}>
+        <Typography variant="h2" mt={5} mb={6}>
           Assessments
         </Typography>
         <Typography variant="body1" maxWidth="700px" component={'p'} mb={3}>
-          The current Mobile Toolbox library has 9 cognitive assessments. The library will continue to grow over time.
+          The current Mobile Toolbox library has 9 cognitive assessments. The
+          library will continue to grow over time.
         </Typography>
         {/* <Link href="">Donwload Technical Manual</Link>*/}
         <AssessmentContainer maxWidth="xl">

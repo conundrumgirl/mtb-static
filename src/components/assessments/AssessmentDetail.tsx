@@ -163,7 +163,9 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
               <Grid item xs={12} lg={6}>
                 <Box textAlign="left">
                   <Hidden lgDown>{Header}</Hidden>
-                  <Box>{data.summary}</Box>
+                  <Box fontSize="16px" lineHeight="20px">
+                    {data.summary}
+                  </Box>
                   <StyledDivider />
                   <ImageTextRow sx={{marginLeft: theme.spacing(2)}}>
                     <img

@@ -83,10 +83,7 @@ const AssessmentLibraryWrapper: FunctionComponent<
           Assessments
         </Typography>
         <Typography variant="body1" maxWidth="700px" component={'p'} mb={3}>
-          Assessments Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Condimentum ut elementum ultricies fringilla quis bibendum eget lacus
-          eget. Nec sit ut tellus nec porttitor erat adipiscing. A id gravida mi
-          faucibus dui, scelerisque volutpat.
+          The current Mobile Toolbox library has 9 cognitive assessments. The library will continue to grow over time.
         </Typography>
         {/* <Link href="">Donwload Technical Manual</Link>*/}
         <AssessmentContainer maxWidth="xl">

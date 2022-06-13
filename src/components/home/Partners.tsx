@@ -1,5 +1,5 @@
+import pensate from '@assets/about/pennstatelogo.svg'
 import {ReactComponent as Northwestern_Logo} from '@assets/northwestern_logo.svg'
-import {ReactComponent as PenState_Logo} from '@assets/penstate.svg'
 import {ReactComponent as SageBio_Logo} from '@assets/sage_bio_logo.svg'
 import {Box, Button, Grid, Typography} from '@mui/material'
 import {styled} from '@mui/material/styles' //vs mui/styles
@@ -31,7 +31,7 @@ const Partners: FunctionComponent<{}> = () => {
           <SageBio_Logo />
         </Grid>
         <Grid item xs={12} lg={4} textAlign="center">
-          <PenState_Logo />
+          <img src={pensate} />
         </Grid>
         <Grid item xs={12} textAlign="center">
           <Button color="primary" variant="contained" href="/about-us">

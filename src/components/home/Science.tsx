@@ -34,12 +34,13 @@ const Science: FunctionComponent<{}> = () => {
             for remote administration through digital health tools developed by
             teams of scientists with decades of measures development. The
             growing portfolio of digital assessments include assessments derived
-            from well-established measurement systems such as the NIH Toolbox®,
-            Patient Reported Outcomes Measurement Information System (PROMIS ®);
-            and International Cognitive Ability Resource (ICAR). Built on top of
-            Sage Bionetwork’s Mobile Health Platform that has supported 500k
-            research participants provides tools for automated iOS and Android
-            app configuration, study management, and data collection.
+            from well-established measurement systems such as the NIH Toolbox
+            <sup>&reg;</sup>, Patient Reported Outcomes Measurement Information
+            System (PROMIS<sup>&reg;</sup>); and International Cognitive Ability
+            Resource (ICAR). Built on top of Sage Bionetwork’s Mobile Health
+            Platform that has supported 500k research participants provides
+            tools for automated iOS and Android app configuration, study
+            management, and data collection.
           </Typography>
         </Grid>
         <Grid item xs={12} lg={6}>

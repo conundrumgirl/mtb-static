@@ -219,6 +219,7 @@ const staticPagesTheme: Theme = createTheme({
           },
           '&.Mui-disabled': {
             backgroundColor: '#D0D4D9',
+            color: '#AEB5BC',
           },
         },
         outlinedPrimary: {

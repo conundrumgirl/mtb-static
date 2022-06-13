@@ -11,16 +11,9 @@ import {NavLink} from 'react-router-dom'
 const drawerWidth = '200px'
 
 const OpenMobileMenuButton = styled(IconButton)(({theme, color}) => ({
-  marginRight: theme.spacing(2),
-  float: 'right',
-  display: 'block',
-  textAlign: 'right',
-  color: color,
-  '&::after': {
-    content: '',
-    display: 'table',
-    clear: 'both',
-  },
+  position: 'absolute',
+  right: theme.spacing(2),
+  top: theme.spacing(2),
 }))
 
 const StyledLink = styled('span')(({theme}) => ({

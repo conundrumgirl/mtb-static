@@ -104,12 +104,16 @@ export const HowItWorksDesktop: FunctionComponent = () => {
             <Grid item xs={12} lg={6} key={`${index}`}>
               <Item>
                 <StyledNumber>0{index + 1}</StyledNumber>
-                <Typography variant="largeBodyCopy" component={'p'} mb={4}>
+                <Typography
+                  variant="largeBodyCopy"
+                  component={'p'}
+                  mb={4}
+                  sx={{height: '80px'}}>
                   {item.intro}
                 </Typography>
-                <Typography variant="body1" mb={4}>
+                {/*   <Typography variant="body1" mb={4}>
                   {item.body}
-                </Typography>
+        </Typography>*/}
                 {/*<LearnMoreLink to={item.link}>
                 Learn More&nbsp;&nbsp;
                 <MoreArrow />
@@ -138,9 +142,9 @@ export const HowItWorksMobile: FunctionComponent = () => {
       <Typography variant="largeBodyCopy" mb={4} component={'p'}>
         {item.intro}
       </Typography>
-      <Typography variant="body1" mb={4}>
+      {/*   <Typography variant="body1" mb={4}>
         {item.body}
-      </Typography>
+  </Typography>*/}
       {/*{' '}
       <LearnMoreLink to={item.link}>
         Learn More&nbsp;&nbsp;

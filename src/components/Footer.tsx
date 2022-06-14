@@ -66,8 +66,16 @@ const Footer: React.FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
             <LinkGroup>
               <strong>Legal</strong>
 
-              <a href="">Terms</a>
-              <a href="">Privacy</a>
+              <a
+                href="https://studies.mobiletoolbox.org/MTB-ToS-v2-210923.pdf"
+                target="_blank">
+                Terms
+              </a>
+              <a
+                href="https://studies.mobiletoolbox.org/MTBPrivacyPolicy.pdf"
+                target="_blank">
+                Privacy
+              </a>
             </LinkGroup>
           </Box>
         </Box>
@@ -83,8 +91,16 @@ const Footer: React.FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
           </a>
           <a href="/about-us">About Us</a>
           <a href="/assessments">Assessments</a>
-          <a href="">Terms</a>
-          <a href="">Privacy</a>
+          <a
+            href="https://studies.mobiletoolbox.org/MTB-ToS-v2-210923.pdf"
+            target="_blank">
+            Terms
+          </a>
+          <a
+            href="https://studies.mobiletoolbox.org/MTBPrivacyPolicy.pdf"
+            target="_blank">
+            Privacy
+          </a>
         </LinkGroup>
       </Hidden>
     </Box>

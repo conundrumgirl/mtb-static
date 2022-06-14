@@ -1,7 +1,6 @@
 import massgeneral_logo from '@assets/about/massgeneral.svg'
 import MKellen from '@assets/about/mkellen.png'
 import MSliwinski from '@assets/about/m_sliwinski.jpg'
-import nih_logo from '@assets/about/nih.svg'
 import northwestern_logo from '@assets/about/northwesternu.svg'
 import penstate_logo from '@assets/about/pennstatelogo.svg'
 import RGershon from '@assets/about/r_gershon.jpg'
@@ -31,7 +30,7 @@ const orgImages: Map<string, string> = new Map([
   [sagebio_logo, 'Sage Bionetworks'],
   [penstate_logo, 'Penn State'],
   [massgeneral_logo, 'Massachusets General Hospital'],
-  [nih_logo, 'National Institue of Health'],
+  //[nih_logo, 'National Institue of Health'],
   [ucsandiego_logo, 'University of California San Diego'],
   [ucsf_logo, 'University of California San Francisco'],
   [udelaware_logo, 'University of Delaware'],

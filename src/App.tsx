@@ -73,10 +73,11 @@ export default function App() {
                   Mobile Toolbox is closed for additional Beta partners.
                 </Typography>
                 <Typography component={'p'} mt={2} lineHeight="20px">
-                  If you are interested in receiving updates
-                  please join our mailing list{' '}
+                  If you are interested in receiving updates please join our
+                  mailing list{' '}
                   <Link
                     href="https://forms.gle/HP7uJ4uhu3D2Vuwm9"
+                    target="_blank"
                     sx={{fontSize: '16px', lineHeight: '20px'}}>
                     <strong>mailing list</strong>
                   </Link>{' '}

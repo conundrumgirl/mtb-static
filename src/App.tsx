@@ -64,24 +64,22 @@ export default function App() {
                   sx={{position: 'absolute', right: '10px', top: '11px'}}>
                   <ClearIcon />
                 </IconButton>
-                <div>Join Mobile Toolbox</div>
+                <div>Sign up for Mobile Toolbox</div>
                 <Divider sx={{mt: 3}} />
               </DialogTitle>
 
               <DialogContent sx={{color: 'black'}}>
                 <Typography component={'p'} mt={2} lineHeight="20px">
-                  Current access to Mobile Toolbox Beta requires administrator
-                  approval.
+                  Mobile Toolbox is closed for additional Beta partners.
                 </Typography>
                 <Typography component={'p'} mt={2} lineHeight="20px">
-                  If you are interested in obtaining the early-preview Beta
-                  account, please email{' '}
+                  If you are interested in receiving updates
+                  please join our mailing list{' '}
                   <Link
-                    href="mtb_signup@sagebase.com"
+                    href="https://forms.gle/HP7uJ4uhu3D2Vuwm9"
                     sx={{fontSize: '16px', lineHeight: '20px'}}>
-                    <strong>mtb_signup@sagebase.com</strong>
+                    <strong>mailing list</strong>
                   </Link>{' '}
-                  to request the account.
                 </Typography>{' '}
               </DialogContent>
             </Dialog>

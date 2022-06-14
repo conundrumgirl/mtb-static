@@ -3,7 +3,7 @@ import {ReactComponent as Icon2} from '@assets/science2.svg'
 import {ReactComponent as Icon3} from '@assets/science3.svg'
 import {Box, Button, Grid, Typography} from '@mui/material'
 import {styled} from '@mui/material/styles' //vs mui/styles
-import theme, {colors} from '@style/theme'
+import {colors} from '@style/theme'
 import React, {FunctionComponent} from 'react'
 
 const ScienceContainer = styled(Box)(({theme}) => ({}))
@@ -65,11 +65,7 @@ const Science: FunctionComponent<{}> = () => {
             {' '}
             <Icon2 />
           </IconHolder>
-          <Typography
-            component="p"
-            mb={10}
-            variant="largeBodyCopy"
-            color={theme.palette.text.secondary}>
+          <Typography component="p" mb={10} variant="largeBodyCopy">
             Mobile Toolbox assesements have been validated against gold
             standard.
           </Typography>

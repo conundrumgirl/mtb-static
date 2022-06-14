@@ -54,7 +54,7 @@ const Footer: React.FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
               <strong>Get Started</strong>
 
               <a href="#" onClick={onJoin}>
-                Join
+                Sign Up
               </a>
             </LinkGroup>
             <LinkGroup>
@@ -79,7 +79,7 @@ const Footer: React.FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
       <Hidden mdUp>
         <LinkGroup textAlign={'center'}>
           <a href="#" onClick={onJoin}>
-            Join
+            Sign Up
           </a>
           <a href="/about-us">About Us</a>
           <a href="/assessments">Assessments</a>

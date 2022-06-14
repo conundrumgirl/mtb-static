@@ -27,12 +27,7 @@ const Home: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
                   component={'p'}
                   mb={0}
                   mt={10}>
-                  Mobile Toolbox delivers cognitive tests to research study
-                  participants through a smartphone app, allowing researchers to
-                  conduct portions of their studies remotely. Our mission is to
-                  make a growing library of well characterized and validated
-                  cognitive measures widely available and easy to use by the
-                  entire research community.{' '}
+                  Mobile Toolbox allows researchers to conduct studies remotely by delivering digital tests of cognition to participants through a smartphone app. Our mission is to make well-characterized and scientifically validated measures of health widely available and easy to use by researchers studying Alzheimer’s disease and other conditions.{' '}
                 </Typography>
               </Grid>
               <Box

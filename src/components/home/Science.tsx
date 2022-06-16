@@ -30,33 +30,31 @@ const Science: FunctionComponent<{}> = () => {
         columnSpacing={{xs: 4, lg: 12}}>
         <Grid item xs={12} lg={6}>
           <Typography variant="body1" mb={10} component="div">
-            Mobile Toolbox delivers cognitive measures designed and validated
-            for remote administration through digital health tools developed by
-            teams of scientists with decades of measures development. The
-            growing portfolio of digital assessments include assessments derived
-            from well-established measurement systems such as the NIH Toolbox
-            <sup>&reg;</sup>, Patient Reported Outcomes Measurement Information
-            System (PROMIS<sup>&reg;</sup>); and International Cognitive Ability
-            Resource (ICAR). Built on top of Sage Bionetwork’s Mobile Health
-            Platform that has supported 500k research participants provides
-            tools for automated iOS and Android app configuration, study
-            management, and data collection.
+            Mobile Toolbox delivers cognitive and other health measures 
+            developed by content experts and validated for remote administration. 
+            Our growing library of digital measures is derived from well-established 
+            measurement systems such as the NIH Toolbox®, Patient Reported Outcomes Measurement Information System (PROMIS ®), 
+            and International Cognitive Ability Resource (ICAR). 
+            Built on top of Sage Bionetwork’s Mobile Health Platform that has supported 
+            500k research participants, Mobile Toolbox provides tools for
+            automated iOS and Android app configuration, study management, and data collection. 
           </Typography>
         </Grid>
         <Grid item xs={12} lg={6}>
           <Typography variant="body1" mb={10} component="div">
-            Core to Mobile Toolbox is to provide detailed and transparent
-            validation including access to validation data. The initial core
-            cognitive tests have been validated against gold standard measures
-            in healthy adults ages 20-85. Additional clinical validation and
-            norming is currently underway including collection of norms and 12-
-            18- and 24-month change scores are being calculated using an
-            age-stratified (20-85), iOS vs Android, national sample matching the
-            2020 US Census for gender, race, ethnicity, SES and level of
-            education. Clinical validation is in-progress (2022-2023) in 6
-            different studies including healthy and clinical samples, including
-            persons at risk for MCI or AD, cognitively impaired and those with
-            Parkinson’s disease.
+            Mobile Toolbox values transparency. We provide 
+            detailed descriptions of our methods and open access 
+            to our validation data. The initial core cognitive tests 
+            have been validated against gold standard measures in healthy 
+            adults ages 20-85. Additional clinical validation and norming 
+            is currently underway including collection of norms and 
+            6-, 12- 18- and 24-month change scores are being calculated 
+            using an age-stratified (20-85), iOS vs Android, national sample 
+            matching the 2020 US Census for gender, race, ethnicity, SES and 
+            level of education.  Clinical validation is in-progress (2022-2023)
+            for 6 different studies in healthy and clinical samples, including 
+            persons at risk for MCI or AD, cognitively impaired, 
+            and those with Parkinson’s disease. 
           </Typography>
         </Grid>
 

@@ -97,7 +97,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
                 </StyledLink>
               ))}
             <StyledLink islight={islight}>
-              <a onClick={onJoin}>Join</a>
+              <a onClick={onJoin}>Sign Up</a>
             </StyledLink>
           </Toolbar>
         </Box>

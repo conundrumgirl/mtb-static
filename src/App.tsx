@@ -70,16 +70,21 @@ export default function App() {
 
               <DialogContent sx={{color: 'black'}}>
                 <Typography component={'p'} mt={2} lineHeight="20px">
-                  Mobile Toolbox is closed for additional Beta partners.
+                  If you are a Beta Partner or Early Adopter and already have an account, please sign in at {' '}
+                  <Link
+                    href="https://studies.mobiletoolbox.org/"
+                    target="_blank"
+                    sx={{fontSize: '16px', lineHeight: '20px'}}>
+                    <strong>Mobile Toolbox</strong>
+                  </Link>{' '}
                 </Typography>
                 <Typography component={'p'} mt={2} lineHeight="20px">
-                  If you are interested in receiving updates please join our
-                  mailing list{' '}
+                  We are not accepting additional Beta Partners. If you are interested in receiving updates about Mobile Toolbox and early adoption, please join our mailing list{' '}
                   <Link
                     href="https://forms.gle/HP7uJ4uhu3D2Vuwm9"
                     target="_blank"
                     sx={{fontSize: '16px', lineHeight: '20px'}}>
-                    <strong>mailing list</strong>
+                    <strong>Sign Up</strong>
                   </Link>{' '}
                 </Typography>{' '}
               </DialogContent>

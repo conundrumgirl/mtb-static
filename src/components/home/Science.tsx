@@ -44,9 +44,9 @@ const Science: FunctionComponent<{}> = () => {
           <Typography variant="body1" mb={10} component="div">
             Mobile Toolbox values transparency. We provide 
             detailed descriptions of our methods and open access 
-            to our validation data. The initial core cognitive tests 
-            have been validated against gold standard measures in healthy 
-            adults ages 20-85. Additional clinical validation and norming 
+            to our validation data. Convergent validity evidence with gold standard measures 
+            has been collected among healthy adults ages 20-85. 
+            Additional clinical validation and norming 
             is currently underway including collection of norms and 
             6-, 12- 18- and 24-month change scores are being calculated 
             using an age-stratified (20-85), iOS vs Android, national sample 
@@ -64,8 +64,7 @@ const Science: FunctionComponent<{}> = () => {
             <Icon2 />
           </IconHolder>
           <Typography component="p" mb={10} variant="largeBodyCopy">
-            Mobile Toolbox assessments are validated against gold
-            standards.
+            Convergent validity evidence with gold standards has been collected for Mobile Toolbox.
           </Typography>
           <Box mb={10}>
             <Button variant="contained" color="primary" href="/assessments">

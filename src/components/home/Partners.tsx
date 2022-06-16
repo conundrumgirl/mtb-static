@@ -15,13 +15,15 @@ const Partners: FunctionComponent<{}> = () => {
         Our Contributors
       </Typography>
       <Typography variant="body1" maxWidth={'600px'} component="p" mb={25}>
-        Mobile Toolbox comprises a team of clinical colleagues, cognition
-        researchers, measurement scientists and technical experts with proven
-        success in multiple large-scale validation and development projects.
-        Co-Principal Investigators Drs. Gershon and Kellen are at
-        Northwestern University and Sage Bionetworks respectively. Dr. Martin
-        Silwinski of Penn State University leads the integration of the Mobile
-        Toolbox collaboration with Mobile Monitoring of Cognitive Change (M2C2).
+        Mobile Toolbox comprises a team of clinical colleagues, cognition 
+        researchers, measurement scientists and technical experts with 
+        proven success in multiple large-scale validation and development projects. 
+        Co-Principal Investigators Drs. Richard Gershon and Aaron Kaat lead the 
+        development and validation of mobile versions of cognitive assessments at 
+        Northwestern University, and Dr. Mike Kellen leads the development of the 
+        Mobile Toolbox platform at Sage Bionetworks.  Dr. Martin Sliwinski of 
+        Penn State University leads the integration of Mobile Monitoring of 
+        Cognitive Change (M2C2) into the Mobile Toolbox. 
       </Typography>
       <Grid container rowSpacing={15} columnSpacing={{xs: 4, lg: 10}} mb={10}>
         <Grid item xs={12} lg={4} textAlign="center">

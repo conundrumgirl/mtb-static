@@ -126,7 +126,7 @@ const MobileNav: FunctionComponent<{
             ))}
           <StyledLink>
             <a onClick={onJoin}>
-              <strong>Join</strong>
+              <strong>Sign Up</strong>
             </a>
           </StyledLink>
         </DrawerBox>

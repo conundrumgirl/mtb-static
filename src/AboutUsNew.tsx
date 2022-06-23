@@ -1,6 +1,6 @@
 import massgeneral_logo from '@assets/about/massgeneral.svg'
 import northwestern_logo from '@assets/about/northwesternu.svg'
-import penstate_logo from '@assets/about/pennstate.svg'
+import penstate_logo from '@assets/about/pennstatelogo.svg'
 import ucsandiego_logo from '@assets/about/ucsandiego.svg'
 import ucsf_logo from '@assets/about/ucsf.svg'
 import udelaware_logo from '@assets/about/udelaware.svg'

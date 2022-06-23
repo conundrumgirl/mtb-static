@@ -5,6 +5,7 @@
 import AssessmentDetail from '@components/assessments/AssessmentDetail'
 import AssessmentLibrary from '@components/assessments/AssessmentLibrary'
 import AboutUs from './AboutUs'
+import AboutUsNew from './AboutUsNew'
 import Home from './components/home/Home'
 
 export default [
@@ -25,6 +26,12 @@ export default [
     path: '/about-us',
     name: 'About Us',
     Component: AboutUs,
+    exact: true,
+  },
+  {
+    path: '/about-us-new',
+    name: '',
+    Component: AboutUsNew,
     exact: true,
   },
   {

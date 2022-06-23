@@ -79,10 +79,11 @@ const Science: FunctionComponent<{}> = () => {
             <Icon1 />
           </IconHolder>
           <Typography component="p" variant="largeBodyCopy" mb={10}>
-            Remote assessments developed by scientific and technical experts.
+            Remote assessments have been created by content experts.
           </Typography>
           <Box mb={10}>
             <Button variant="contained" color="primary" href="/about-us">
+              {' '}
               {' '}
               View Our Contributors
             </Button>

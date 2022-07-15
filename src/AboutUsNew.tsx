@@ -21,13 +21,14 @@ import {
   ListItemButton,
   ListItemText,
   MenuItem,
+  styled,
   TextField,
 } from '@mui/material'
 import {buttonClasses} from '@mui/material/Button'
-import {alpha, styled} from '@mui/material/styles' //vs mui/styles
+import {alpha} from '@mui/material/styles' //vs mui/styles
 import Tooltip, {tooltipClasses, TooltipProps} from '@mui/material/Tooltip'
 import {Box} from '@mui/system'
-import {latoFont} from '@style/theme'
+import theme, {latoFont} from '@style/theme'
 import React, {FunctionComponent} from 'react'
 import data from './about_data'
 
@@ -46,6 +47,7 @@ const ContributorContainer = styled('div')(({theme}) => ({
   display: 'flex',
   border: '1px solid #DCDCDC',
   height: '450px',
+  marginBottom: theme.spacing(5),
 }))
 
 const StyledH1 = styled('h1')(({theme}) => ({
@@ -171,17 +173,21 @@ const Contributors = styled('div')(({theme}) => ({
 }))
 
 const Photos = styled('div')(({theme}) => ({
-  padding: theme.spacing(10, 0, 0, 10),
-
+  padding: theme.spacing(10, 10, 0, 10),
+  /*
   display: 'flex',
   flexWrap: 'wrap',
-  justifyContent: 'flex-start',
+  justifyContent: 'flex-start',*/
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+  justifyItems: 'center',
+  gap: theme.spacing(3),
 
   backgroundColor: '#fff',
   width: '100%',
   color: '#000',
   [theme.breakpoints.down('md')]: {
-    padding: theme.spacing(5, 0, 0, 5),
+    padding: theme.spacing(5, 5, 0, 5),
   },
   '& .MuiButton-textPrimary': {
     fontWeight: '900',
@@ -193,7 +199,7 @@ const PhotoContainer = styled('div')(({theme}) => ({
   textAlign: 'center',
   width: '122px',
   marginBottom: theme.spacing(10),
-  marginRight: theme.spacing(19),
+  // marginRight: theme.spacing(19),
   cursor: 'pointer',
   '& figure': {
     margin: 0,
@@ -265,7 +271,7 @@ const StyledTooltip = styled(({className, ...props}: TooltipProps) => (
           {
             name: 'offset',
             options: {
-              offset: [0, -5],
+              offset: [0, -1],
             },
           },
         ],
@@ -273,8 +279,8 @@ const StyledTooltip = styled(({className, ...props}: TooltipProps) => (
     }}
   />
 ))(({theme}) => ({
-  [`& .${tooltipClasses.tooltipPlacementBottom}`]: {
-    margin: '0 100px',
+  [`& .${tooltipClasses.tooltipPlacementTop}`]: {
+    margin: '0 10px',
   },
   [`& .${tooltipClasses.tooltip}`]: {
     maxWidth: 220,
@@ -328,7 +334,7 @@ const AboutUs: FunctionComponent<{}> = () => {
   return (
     <PageShell islight={true} onJoin={() => {}}>
       <Container maxWidth="lg">
-        <BodyText1>
+        <BodyText1 sx={{marginTop: theme.spacing(15)}}>
           Mobile Toolbox comprises a team of clinical colleagues, cognition
           researchers, measurement scientists and technical experts with proven
           success in multiple large-scale validation and development projects.
@@ -348,10 +354,9 @@ const AboutUs: FunctionComponent<{}> = () => {
               <img src={src} alt={orgImages.get(src)} key={src} />
             ))}
         </LogoContainer>
-
         <StyledH1>Select a Partner to View Our Contributors</StyledH1>
         <Hidden mdUp>
-          <Box textAlign="center">
+          <Box textAlign="center" sx={{marginBottom: theme.spacing(5)}}>
             <StyledSelect
               id="select org"
               select
@@ -393,7 +398,7 @@ const AboutUs: FunctionComponent<{}> = () => {
                   onClick={() => setCurrentContributor(person)}>
                   <StyledTooltip
                     arrow
-                    placement="bottom"
+                    placement="top"
                     title={
                       <div>
                         {person.title}

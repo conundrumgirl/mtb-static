@@ -14,7 +14,7 @@ import {
   Typography,
 } from '@mui/material'
 import AssessmentService from '@services/assessment.service'
-import theme, {colors, poppinsFont} from '@style/theme'
+import theme, {colors, latoFont, poppinsFont} from '@style/theme'
 import {Assessment} from '@typedefs/types'
 import React, {FunctionComponent} from 'react'
 import {useParams} from 'react-router-dom'
@@ -161,7 +161,8 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
                 </Box>
               </Grid>
               <Grid item xs={12} lg={6}>
-                <Box textAlign="left">
+                <Box textAlign="left" sx={{fontFamily: latoFont}}>
+                  {' '}
                   <Hidden lgDown>{Header}</Hidden>
                   <Box fontSize="16px" lineHeight="20px">
                     {data.summary}
@@ -208,14 +209,12 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
                   </ImageTextRow>
                   {/* <div className={classes.informationText}>[Age: 18 +]</div>*/}
                   <StyledDivider />
-
                   <div style={{width: '100px'}}>Designed By:</div>
                   <div>
                     {correctResource && correctResource.creators
                       ? correctResource.creators.join(', ')
                       : ''}
                   </div>
-
                   {/*
                   <div className={classes.informationText}>
                     [Used in <u>15 published studies</u>]

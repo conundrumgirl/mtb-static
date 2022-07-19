@@ -4,7 +4,7 @@ import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import theme, {colors, poppinsFont} from '@style/theme'
+import theme, {colors, latoFont} from '@style/theme'
 import {Assessment} from '@typedefs/types'
 import {FunctionComponent} from 'react'
 import AssessmentImage from './AssessmentImage'
@@ -70,7 +70,7 @@ const AssessmentCard: FunctionComponent<AssessmentCardProps> = ({
         <Typography
           gutterBottom
           sx={{
-            fontFamily: poppinsFont,
+            fontFamily: latoFont,
             fontSize: 14,
             fontWeight: 'bold',
           }}>

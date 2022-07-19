@@ -23,7 +23,7 @@ import Avatar from '@mui/material/Avatar'
 import {alpha, styled} from '@mui/material/styles' //vs mui/styles
 import {Box} from '@mui/system'
 import {colors, latoFont} from '@style/theme'
-import React, {FunctionComponent} from 'react'
+import {FunctionComponent} from 'react'
 
 const orgImages: Map<string, string> = new Map([
   [northwestern_logo, 'Northwestern University'],
@@ -80,6 +80,7 @@ const LogoContainer = styled('div')<{rowIndex: number}>(
     flexDirection: 'row',
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: theme.spacing(10),
     '&> img, > svg': {
       margin: theme.spacing(0, 11),
@@ -211,15 +212,15 @@ const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
           About Us
         </Typography>
         <Typography variant="body1" maxWidth="700px" mb={6}>
-          Mobile Toolbox comprises a team of clinical colleagues, 
-          cognition researchers, measurement scientists and technical experts 
-          with proven success in multiple large-scale validation and development 
-          projects. Co-Principal Investigators Drs. Richard Gershon and Aaron Kaat 
-          lead the development and validation of mobile versions of cognitive 
-          assessments at Northwestern University, and Dr. Mike Kellen leads 
-          the development of the Mobile Toolbox platform at Sage Bionetworks. 
-          Dr. Martin Sliwinski of Penn State University leads the integration 
-          of Mobile Monitoring of Cognitive Change (M2C2) into the Mobile Toolbox.
+          Mobile Toolbox comprises a team of clinical colleagues, cognition
+          researchers, measurement scientists and technical experts with proven
+          success in multiple large-scale validation and development projects.
+          Co-Principal Investigators Drs. Richard Gershon and Aaron Kaat lead
+          the development and validation of mobile versions of cognitive
+          assessments at Northwestern University, and Dr. Mike Kellen leads the
+          development of the Mobile Toolbox platform at Sage Bionetworks. Dr.
+          Martin Sliwinski of Penn State University leads the integration of
+          Mobile Monitoring of Cognitive Change (M2C2) into the Mobile Toolbox.
         </Typography>
       </Section>
       <Box bgcolor={colors.purpleTransparency2}>
@@ -231,7 +232,12 @@ const AboutUs: FunctionComponent<{onJoin: () => void}> = ({onJoin}) => {
             {Array.from(orgImages.keys())
               .slice(0, 3)
               .map((src, index) => (
-                <img src={src} alt={orgImages.get(src)} key={src} />
+                <img
+                  src={src}
+                  alt={orgImages.get(src)}
+                  key={src}
+                  height={orgImages.get(src) === 'Penn State' ? '65px' : 'auto'}
+                />
               ))}
           </LogoContainer>
           <LogoContainer rowIndex={2}>

@@ -7,6 +7,7 @@ import AssessmentLibrary from '@components/assessments/AssessmentLibrary'
 import AboutUs from './AboutUs'
 import AboutUsNew from './AboutUsNew'
 import Home from './components/home/Home'
+import Faq from './Faq'
 
 export default [
   {
@@ -26,6 +27,12 @@ export default [
     path: '/about-us',
     name: 'About Us',
     Component: AboutUs,
+    exact: true,
+  },
+  {
+    path: '/faq',
+    name: 'FAQ',
+    Component: Faq,
     exact: true,
   },
   {
@@ -77,5 +84,5 @@ export default [
     name: 'Login',
     Component: SignInPage,
   },*/
-  {path: '/home', name: '', Component: Home, exact: true},
+  { path: '/home', name: '', Component: Home, exact: true },
 ]

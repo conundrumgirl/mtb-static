@@ -1,9 +1,14 @@
-import ClockIcon from '@assets/clock.svg'
-import mtb_a from '@assets/mtb_assessment.svg'
-import ScientificallyValidatedIcon from '@assets/validated.svg'
 import Loader from '@components/widgets/Loader'
 import PageShell from '@components/widgets/PageShell'
-import {useAsync} from '@helpers/AsyncHook'
+import { useAsync } from '@helpers/AsyncHook'
+import ArticleTwoToneIcon from '@mui/icons-material/ArticleTwoTone'
+import CakeTwoToneIcon from '@mui/icons-material/CakeTwoTone'
+import ChatBubbleTwoToneIcon from '@mui/icons-material/ChatBubbleTwoTone'
+import FactCheckTwoToneIcon from '@mui/icons-material/FactCheckTwoTone'
+import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone'
+import StarsTwoToneIcon from '@mui/icons-material/StarsTwoTone'
+import TimerTwoToneIcon from '@mui/icons-material/TimerTwoTone'
+import VerifiedTwoToneIcon from '@mui/icons-material/VerifiedTwoTone'
 import {
   Box,
   Container,
@@ -11,17 +16,17 @@ import {
   Grid,
   Hidden,
   styled,
-  Typography,
+  Typography
 } from '@mui/material'
 import AssessmentService from '@services/assessment.service'
-import theme, {colors, latoFont, poppinsFont} from '@style/theme'
-import {Assessment} from '@typedefs/types'
-import React, {FunctionComponent} from 'react'
-import {useParams} from 'react-router-dom'
+import theme, { colors, latoFont, poppinsFont } from '@style/theme'
+import { Assessment } from '@typedefs/types'
+import React, { FunctionComponent, ReactElement } from 'react'
+import { useParams } from 'react-router-dom'
 import BreadCrumb from '../widgets/BreadCrumb'
 import AssessmentImage from './AssessmentImage'
 
-const ImageTextRow = styled(Box)(({theme}) => ({
+const ImageTextRow = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -31,13 +36,13 @@ const ImageTextRow = styled(Box)(({theme}) => ({
   marginBottom: theme.spacing(2.5),
 }))
 
-const InfoTextInContainer = styled(Box)(({theme}) => ({
+const InfoTextInContainer = styled(Box)(({ theme }) => ({
   fontSize: '14px',
   lineHeight: '18px',
   fontFamily: poppinsFont,
 }))
 
-const StyledDivider = styled(Divider)(({theme}) => ({
+const StyledDivider = styled(Divider)(({ theme }) => ({
   marginTop: theme.spacing(5),
   marginBottom: theme.spacing(5),
   width: '100%',
@@ -46,6 +51,26 @@ const StyledDivider = styled(Divider)(({theme}) => ({
 
 type AssessmentDetailProps = {
   onJoin: () => void
+}
+
+const SectionWithIcon: FunctionComponent<{ icon: ReactElement; heading: string; text: string }> = ({
+  icon,
+  heading,
+  text,
+}) => {
+  return (
+    <Box>
+      <Box sx={{ display: 'flex', alignItems: 'center', ' > svg': { color: '#878E95' } }}>
+        {icon}
+        <Typography variant="h4" sx={{ marginLeft: theme.spacing(1) }}>
+          {heading}
+        </Typography>
+      </Box>
+      <Typography variant="body1" component={'p'} sx={{ display: 'block', margin: theme.spacing(0.5, 0, 4, 0) }}>
+        {text}
+      </Typography>
+    </Box>
+  )
 }
 
 const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
@@ -58,9 +83,9 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
     },
   ]
 
-  let {id} = useParams<{id: string}>()
+  let { id } = useParams<{ id: string }>()
 
-  const {data, status, error, run} = useAsync<Assessment>({
+  const { data, status, error, run } = useAsync<Assessment>({
     status: 'PENDING',
     data: null,
   })
@@ -73,7 +98,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
     ///your async call
     return run(
       (async function (id) {
-        const {assessments} =
+        const { assessments } =
           await AssessmentService.getAssessmentsWithResources(id)
         if (assessments.length === 0) {
           throw new Error('no assessment found')
@@ -110,7 +135,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
     return (
       <PageShell islight={true} onJoin={onJoin}>
         <Container
-          maxWidth="md"
+          maxWidth="lg"
           sx={{
             textAlign: 'center',
             paddingBottom: theme.spacing(6),
@@ -127,7 +152,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
             <BreadCrumb links={links}></BreadCrumb>
           </Box>
 
-          <InfoTextInContainer sx={{color: colors.neutralsBlack}}>
+          <InfoTextInContainer sx={{ color: colors.neutralsBlack }}>
             <Grid
               container
               spacing={'32px'}
@@ -136,7 +161,7 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
                 borderRadius: '0px',
               }}>
               <Grid item xs={12} lg={6}>
-                <Box maxWidth="530px" style={{textAlign: 'left'}}>
+                <Box maxWidth="530px" style={{ textAlign: 'left' }}>
                   <Hidden lgUp>
                     {/*  */}
                     {Header}
@@ -161,67 +186,38 @@ const AssessmentDetail: FunctionComponent<AssessmentDetailProps> = ({
                 </Box>
               </Grid>
               <Grid item xs={12} lg={6}>
-                <Box textAlign="left" sx={{fontFamily: latoFont}}>
+                <Box textAlign="left" sx={{ fontFamily: latoFont }}>
                   {' '}
                   <Hidden lgDown>{Header}</Hidden>
-                  <Box fontSize="16px" lineHeight="20px">
+                  <Box sx={{ fontSize: '16px', lineHeight: '20px', marginTop: { lg: 0, md: theme.spacing(3) } }}>
                     {data.summary}
                   </Box>
                   <StyledDivider />
-                  <ImageTextRow sx={{marginLeft: theme.spacing(2)}}>
-                    <img
-                      style={{
-                        marginRight: theme.spacing(1),
-                        width: '24px',
-                        height: '24px',
-                      }}
-                      src={ScientificallyValidatedIcon}
-                      alt="scientifically_validated_icon"></img>
-                    <Typography component="span">
-                      Validation and Norming in progress
-                    </Typography>
-                  </ImageTextRow>
-                  <ImageTextRow>
-                    <img
-                      style={{
-                        marginRight: '8px',
-                        width: '20px',
-                        height: '20px',
-                      }}
-                      src={mtb_a}
-                      alt="official_mobile_toolbox_icon"></img>
-                    <Typography component="span">
-                      Official Mobile Toolbox version
-                    </Typography>
-                  </ImageTextRow>
-                  <ImageTextRow>
-                    <img
-                      style={{
-                        marginRight: '8px',
-                        width: '20px',
-                        height: '20px',
-                      }}
-                      src={ClockIcon}
-                      alt="clock_icon"></img>
-                    <Typography component="span">
-                      {data.minutesToComplete} min
-                    </Typography>
-                  </ImageTextRow>
-                  {/* <div className={classes.informationText}>[Age: 18 +]</div>*/}
-                  <StyledDivider />
-                  <div style={{width: '100px'}}>Designed By:</div>
-                  <div>
-                    {correctResource && correctResource.creators
-                      ? correctResource.creators.join(', ')
-                      : ''}
-                  </div>
-                  {/*
-                  <div className={classes.informationText}>
-                    [Used in <u>15 published studies</u>]
-                  </div>
-                  <div className={classes.informationText}>
-                    [2840 participants]
-                      </div>*/}
+                  <Box sx={{ width: '100%', '> div': { width: '50%', float: 'left' } }}>
+                    <Box>
+                      <SectionWithIcon
+                        icon={<VerifiedTwoToneIcon />}
+                        heading="Validation"
+                        text="Scientifically Validated"
+                      />
+
+                      <SectionWithIcon icon={<CakeTwoToneIcon />} heading="Age" text="todo: age" />
+                    </Box>
+                    <Box>
+                      <SectionWithIcon
+                        icon={<TimerTwoToneIcon />}
+                        heading="Duration"
+                        text={`${data.minutesToComplete} min`}
+                      />
+                      <SectionWithIcon icon={<ChatBubbleTwoToneIcon />} heading="Language" text="todo:" />
+                    </Box>
+                  </Box>
+                  <Box sx={{ clear: 'left' }}>
+                    <SectionWithIcon icon={<StarsTwoToneIcon />} heading="Score" text="todo: " />
+                    <SectionWithIcon icon={<FactCheckTwoToneIcon />} heading="Reliability" text="todo: " />
+                    <SectionWithIcon icon={<ArticleTwoToneIcon />} heading="Publications" text="todo: " />
+                    <SectionWithIcon icon={<MenuBookTwoToneIcon />} heading="Technical Manual" text="" />
+                  </Box>
                 </Box>
               </Grid>
             </Grid>

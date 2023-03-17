@@ -1,25 +1,44 @@
+import assDetailFrame from '@assets//assessment_detail_frame.svg'
 import DefaultImg from '@assets/sage.svg'
 import { Box, CardMedia, styled } from '@mui/material'
 import { AssessmentResource } from '@typedefs/types'
 import React, { FunctionComponent, ReactNode } from 'react'
 
-const StyledCardMedia = styled(CardMedia)(({theme}) => ({
+const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
   height: 180,
-      padding: `${theme.spacing(2)} ${theme.spacing(2)} 0 ${theme.spacing(2)}`,
-      backgroundPositionY: 'top',
-      display: 'flex',
-      flexShrink: 0,
-      flexDirection: 'row',
+  backgroundColor: '#f6f6f6',
+  padding: `${theme.spacing(2)} ${theme.spacing(2)} 0 ${theme.spacing(2)}`,
+  backgroundPositionY: 'center',
+  backgroundSize: '90%',
+
+  display: 'flex',
+  flexShrink: 0,
+  flexDirection: 'row',
 }))
 
-const StyledImgBox = styled(Box)(({theme}) => ({
-    detailImageContainer: {
-      padding: theme.spacing(0),
-      '& img': {
-        width: '100%',
-      },
+const DetailImageContainer = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(0),
+  backgroundImage: `url(${assDetailFrame})`,
+  backgroundRepeat: 'no-repeat',
+  height: '270px',
+  width: '530px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  '& img': {
+    width: '100%',
+  },
+}))
+
+const StyledImgBox = styled(Box)(({ theme }) => ({
+  detailImageContainer: {
+    padding: theme.spacing(0),
+    '& img': {
+      width: '100%',
     },
-  })
+  },
+})
 )
 
 type AssessmentImageProps = {
@@ -62,22 +81,19 @@ const AssessmentImage: FunctionComponent<AssessmentImageProps> = ({
       break
     }
     case 'detail': {
+
       image = (
-        <StyledImgBox>
-          <img
-            src={screen?.url || DefaultImg}
-            alt={name}
-            height="100%"
-            style={smallVariantProperties}
-          />
-       </StyledImgBox> 
+        <DetailImageContainer>
+          <img src={screen?.url || DefaultImg} alt={name} height="100%" style={smallVariantProperties} />
+        </DetailImageContainer>
       )
       break
+
     }
     default: {
       image = (
         <StyledCardMedia
-       
+
           image={screen?.url || DefaultImg}
           title={name}>
           {children}

@@ -1,13 +1,14 @@
-import {ReactComponent as LogoLight} from '@assets/mtb_logo_static.svg'
-import {Box, Hidden} from '@mui/material'
-import {styled} from '@mui/material/styles'
+import { ReactComponent as LogoSmall } from '@assets/mtb_logo_small.svg'
+import { ReactComponent as LogoLight } from '@assets/mtb_logo_static.svg'
+import { Box, Hidden } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
-import theme, {latoFont} from '@style/theme'
-import React, {FunctionComponent} from 'react'
-import {NavLink} from 'react-router-dom'
+import theme, { latoFont } from '@style/theme'
+import React, { FunctionComponent } from 'react'
+import { NavLink } from 'react-router-dom'
 import MobileNav from './MobileNav'
 
-const StyledLink = styled('span')<{islight?: boolean}>(({theme, islight}) => ({
+const StyledLink = styled('span')<{ islight?: boolean }>(({ theme, islight }) => ({
   '&>a': {
     margin: theme.spacing(5),
     padding: theme.spacing(0.5, 0),
@@ -34,7 +35,7 @@ const StyledLink = styled('span')<{islight?: boolean}>(({theme, islight}) => ({
 }))
 
 type AppTopNavProps = {
-  routes: {name: string; path: string}[]
+  routes: { name: string; path: string }[]
   islight?: boolean
   onJoin: () => void
 }
@@ -49,11 +50,28 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
   return (
     <>
       <Hidden lgUp>
-        <MobileNav
-          islight={islight}
-          routes={routes.filter(route => route.name)}
-          onJoin={onJoin}
-        />
+        <Box
+          sx={{
+            height: '65px',
+            display: 'flex',
+            backgroundColor: '#FFFFFF',
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            boxShadow: '0 0px 8px 0px #ddd',
+            px: 2,
+            py: 1,
+            mb: 2,
+          }}>
+          <a href="/">
+            <LogoSmall title="Mobile Toolbox" style={{ paddingLeft: '16px' }} />
+          </a>
+          <MobileNav
+            islight={islight}
+            routes={routes.filter(route => route.name)}
+            onJoin={onJoin}
+          />
+        </Box>
       </Hidden>
       <Hidden lgDown>
         <Box
@@ -70,7 +88,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
             mb: 3,
           }}>
           <a href="/">
-            <LogoLight title="Mobile Toolbox" style={{paddingLeft: '16px'}} />
+            <LogoLight title="Mobile Toolbox" style={{ paddingLeft: '16px' }} />
           </a>
 
           <Toolbar
@@ -88,7 +106,7 @@ const TopNav: FunctionComponent<AppTopNavProps> = ({
                   <NavLink
                     to={route.path}
                     key={route.name}
-                    style={({isActive}) => ({
+                    style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 400,
                       color: isActive ? '#4F527D' : ' #353A3F',
                     })}>

@@ -17,7 +17,7 @@ const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
 }))
 
 const DetailImageContainer = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(0),
+  padding: '9px 0px 16px 0px',
   backgroundImage: `url(${assDetailFrame})`,
   backgroundRepeat: 'no-repeat',
   height: '270px',
@@ -28,18 +28,11 @@ const DetailImageContainer = styled(Box)(({ theme }) => ({
 
   '& img': {
     width: '100%',
+
   },
 }))
 
-const StyledImgBox = styled(Box)(({ theme }) => ({
-  detailImageContainer: {
-    padding: theme.spacing(0),
-    '& img': {
-      width: '100%',
-    },
-  },
-})
-)
+
 
 type AssessmentImageProps = {
   resources: AssessmentResource[] | undefined
